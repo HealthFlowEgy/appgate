@@ -1,0 +1,42 @@
+<mat-nav-list class="material-menu">
+  <ng-container *ngFor="let item of items">
+    <!-- Simple menu item (no children) -->
+    <a 
+      mat-list-item 
+      *ngIf="!item.children" 
+      [routerLink]="item.link"
+      [class.active]="isActive(item.link)"
+      class="menu-item">
+      <mat-icon matListItemIcon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+      <span matListItemTitle>{{ item.title }}</span>
+    </a>
+
+    <!-- Expandable menu item (with children) -->
+    <div *ngIf="item.children" class="menu-item-group">
+      <a 
+        mat-list-item 
+        (click)="toggleExpanded(item)"
+        [class.active]="isParentActive(item)"
+        [class.expanded]="item.expanded"
+        class="menu-item parent-item">
+        <mat-icon matListItemIcon *ngIf="item.icon">{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.title }}</span>
+        <mat-icon class="expand-icon">
+          {{ item.expanded ? 'expand_less' : 'expand_more' }}
+        </mat-icon>
+      </a>
+
+      <!-- Submenu items -->
+      <div class="submenu" [class.expanded]="item.expanded">
+        <a 
+          mat-list-item 
+          *ngFor="let child of item.children"
+          [routerLink]="child.link"
+          [class.active]="isActive(child.link)"
+          class="submenu-item">
+          <span matListItemTitle>{{ child.title }}</span>
+        </a>
+      </div>
+    </div>
+  </ng-container>
+</mat-nav-list>

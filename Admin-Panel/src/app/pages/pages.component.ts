@@ -8,10 +8,10 @@ import { RoleService } from '../@core/utils/role.service';
   selector: 'ngx-pages',
   styleUrls: ['pages.component.scss'],
   template: `
-    <ngx-one-column-layout>
-      <nb-menu [items]="menu"></nb-menu>
+    <ngx-material-layout>
+      <ngx-material-menu menu [items]="menu"></ngx-material-menu>
       <router-outlet></router-outlet>
-    </ngx-one-column-layout>
+    </ngx-material-layout>
   `,
 })
 export class PagesComponent implements OnInit {

@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveAppointment()" #form="ngForm">
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.USER.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'APPOINTMENT.FIELDS.USER.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'APPOINTMENT.FIELDS.USER.MOBILE_NUMBER.LABEL' | translate }}</label>
                                         <input readonly nbInput fullWidth [value]="appointment.resident?.user?.mobile_number" />
@@ -26,8 +28,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="form-group">
@@ -36,9 +38,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.USER.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'APPOINTMENT.FIELDS.USER.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'APPOINTMENT.FIELDS.USER.MOBILE_NUMBER.LABEL' | translate }}</label>
                                         <input readonly nbInput fullWidth [value]="appointment.resident?.user?.mobile_number" />
@@ -57,15 +61,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.SCHEDULE.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'APPOINTMENT.FIELDS.SCHEDULE.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row">
@@ -102,15 +108,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.PAYMENT.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'APPOINTMENT.FIELDS.PAYMENT.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -128,8 +136,8 @@
                                             <input readonly nbInput fullWidth [value]="appointment.payment?.status" />
                                         </div>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="form-group">
@@ -148,12 +156,14 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'APPOINTMENT.FIELDS.STATUS.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="status" id="status" [(ngModel)]="appointmentRequest.status"
+                        <mat-form-field>
+                        <mat-select fullWidth name="status" id="status" [(ngModel)]="appointmentRequest.status"
                             #status=ngModel style="text-transform:capitalize">
-                            <nb-option *ngFor="let appointmentStatus of appointmentStatusList"
+                            <mat-option *ngFor="let appointmentStatus of appointmentStatusList"
                                 [value]="appointmentStatus">{{ appointmentStatus }}
-                            </nb-option>
-                        </nb-select>
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of appointmentError.status">{{error}}</label>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
@@ -165,7 +175,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="savePlan()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'PLAN.FIELDS.NAME.LABEL' | translate }}</label>
@@ -57,7 +57,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -1,0 +1,132 @@
+.material-menu {
+  padding: 0;
+  background-color: transparent;
+
+  .menu-item {
+    color: #ffffff;
+    padding: 12px 20px;
+    margin: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      background-color: rgba(61, 175, 255, 0.2);
+      border-left: 3px solid #3daff;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: #3dafff;
+      }
+    }
+
+    mat-icon {
+      color: #8f9bb3;
+      margin-right: 12px;
+    }
+
+    &.active mat-icon {
+      color: #3dafff;
+    }
+  }
+
+  .parent-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .expand-icon {
+      margin-left: auto;
+      margin-right: 0;
+      transition: transform 0.3s ease;
+    }
+
+    &.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .menu-item-group {
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+
+      &.expanded {
+        max-height: 500px;
+      }
+
+      .submenu-item {
+        color: #8f9bb3;
+        padding: 10px 20px 10px 60px;
+        margin: 2px 8px;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+          color: #ffffff;
+        }
+
+        &.active {
+          background-color: rgba(61, 175, 255, 0.15);
+          color: #3dafff;
+          border-left: 3px solid #3dafff;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #3dafff;
+          }
+        }
+      }
+    }
+  }
+
+  // Remove default Material styles
+  ::ng-deep {
+    .mat-mdc-list-item {
+      height: auto !important;
+      min-height: 48px;
+    }
+
+    .mat-mdc-list-item-unscoped-content {
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .mdc-list-item__content {
+      padding: 0;
+    }
+  }
+}
+
+// Mobile adjustments
+@media (max-width: 768px) {
+  .material-menu {
+    .menu-item {
+      padding: 10px 15px;
+      margin: 3px 6px;
+    }
+
+    .submenu-item {
+      padding: 8px 15px 8px 50px;
+    }
+  }
+}

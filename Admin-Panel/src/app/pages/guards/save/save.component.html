@@ -1,14 +1,16 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveGuard()" #form="ngForm">
 
                     <div *ngIf="!editId" class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'GUARD.FIELDS.USER.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'GUARD.FIELDS.USER.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'USER.NAME.LABEL' | translate }}</label>
                                         <input type="email" nbInput fullWidth placeholder="Name" name="name"
@@ -31,18 +33,20 @@
                                         <label class="error text-danger"
                                             *ngFor="let error of guardError.mobile_number">{{error}}</label>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>{{ 'GUARD.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
+                        <mat-form-field>
+                        <mat-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
                             style="text-transform: capitalize" [(ngModel)]="guardRequest.project_id"
                             #project_id=ngModel>
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     </div>
 
                     <ngx-metaeditor [(meta)]="guardRequest.meta"></ngx-metaeditor>
@@ -56,7 +60,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

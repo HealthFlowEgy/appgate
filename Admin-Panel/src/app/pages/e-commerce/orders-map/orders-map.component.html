@@ -1,6 +1,8 @@
-<nb-card>
-  <nb-card-header>{{ 'DASHBOARD.ACTIVE_ORDERS' | translate }}</nb-card-header>
-  <nb-card-body>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ 'DASHBOARD.ACTIVE_ORDERS' | translate }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
     <div *ngIf="apiLoaded | async">
       <google-map #googleMap width="100%">
         <map-marker *ngFor="let order of orders"
@@ -9,28 +11,30 @@
         </map-marker>
       </google-map>
     </div>
-  </nb-card-body>
-</nb-card>
+  </mat-card-content>
+</mat-card>
 
 <ng-template #orderInfoDialog let-data let-ref="dialogRef">
-  <nb-card>
-    <nb-card-header>{{ 'DASHBOARD.ORDER' | translate }} #{{data.id}}</nb-card-header>
-    <nb-card-body>
+  <mat-card>
+    <mat-card-header>
+    <mat-card-title>{{ 'DASHBOARD.ORDER' | translate }} #{{data.id}}</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="person-outline"></nb-icon>
+          <mat-icon>person-outline</mat-icon>
         </div>
         <div class="col-sm-8">{{data.user.mobile_number}}</div>
       </div>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="people-outline"></nb-icon>
+          <mat-icon>people-outline</mat-icon>
         </div>
         <div class="col-sm-8">{{data.vendor.name}}</div>
       </div>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="car-outline"></nb-icon>
+          <mat-icon>car-outline</mat-icon>
         </div>
         <div class="col-sm-8">
           <span *ngIf="data.delivery?.delivery">{{data.delivery?.delivery?.user.mobile_number }}</span>
@@ -39,14 +43,14 @@
       </div>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="info-outline"></nb-icon>
+          <mat-icon>info-outline</mat-icon>
         </div>
         <div class="col-sm-8">{{data.status}}</div>
       </div>
       <div></div>
-    </nb-card-body>
-    <nb-card-footer>
-      <button nbButton (click)="ref.close()">{{ 'COMMON.CLOSE' | translate }}</button>
-    </nb-card-footer>
-  </nb-card>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="ref.close()">{{ 'COMMON.CLOSE' | translate }}</button>
+    </mat-card-actions>
+  </mat-card>
 </ng-template>

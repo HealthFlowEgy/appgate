@@ -1,17 +1,20 @@
 <div class="header-container">
   <div class="logo-container">
-    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
-      <nb-icon icon="menu-2-outline"></nb-icon>
-    </a>
+    <button mat-icon-button (click)="toggleSidebar()" class="sidebar-toggle">
+      <mat-icon>menu</mat-icon>
+    </button>
     <a class="logo" href="#" (click)="navigateHome()">{{ appName }}</a>
   </div>
-  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">
-    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>
-  </nb-select>
+  <mat-form-field appearance="outline" class="theme-selector">
+    <mat-label>Theme</mat-label>
+    <mat-select [value]="currentTheme" (selectionChange)="changeTheme($event.value)">
+      <mat-option *ngFor="let theme of themes" [value]="theme.value">{{ theme.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 
 <div class="header-container">
-  <nb-actions size="medium">
-    <nb-action class="control-item" icon="power-outline" (click)="logout()"></nb-action>
-  </nb-actions>
+  <button mat-icon-button (click)="logout()" class="logout-button" matTooltip="Logout">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
 </div>

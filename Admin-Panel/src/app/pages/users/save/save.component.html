@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveUser()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'USER.NAME.LABEL' | translate }}</label>
@@ -32,7 +32,7 @@
                     </div>                  
                     <div class="form-group">
                         <label>{{ 'USER.MOBILE_VERIFIED.LABEL' | translate }}</label>
-                        <nb-checkbox class="form-control" name="mobile_verified" nbInput fullWidth [checked]="userRequest.mobile_verified" (checkedChange)="onMobileVerifiedChange($event)">{{ 'USER.MOBILE_VERIFIED.LABEL' | translate }}?</nb-checkbox>
+                        <mat-checkbox class="form-control" name="mobile_verified" nbInput fullWidth [checked]="userRequest.mobile_verified" (checkedChange)="onMobileVerifiedChange($event)">{{ 'USER.MOBILE_VERIFIED.LABEL' | translate }}?</mat-checkbox>
                         <label class="error text-danger" *ngFor="let error of userError.mobile_verified">{{error}}</label>                        
                     </div>                                                      
                     <div class="form-group">
@@ -46,10 +46,12 @@
                     </div>                                                        
                     <div class="form-group">
                         <label>{{ 'USER.ROLES.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="roles" multiple [(ngModel)]="userRequest.roles" #roles=ngModel
+                        <mat-form-field>
+                        <mat-select fullWidth name="roles" multiple [(ngModel)]="userRequest.roles" #roles=ngModel
                         style="text-transform: capitalize">
-                            <nb-option *ngFor="let userRole of userRoles" [value]="userRole.name">{{ formatRole(userRole.name) }}</nb-option>
-                        </nb-select>                        
+                            <mat-option *ngFor="let userRole of userRoles" [value]="userRole.name">{{ formatRole(userRole.name) }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>                        
                         <label class="error text-danger" *ngFor="let error of userError.roles">{{error}}</label>                        
                     </div>          
                     <div class="form-group">
@@ -77,12 +79,14 @@
                     </div>-->
                     <div class="form-group">
                         <label>{{ 'USER.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="project_id" [(ngModel)]="userRequest.meta.project_id"
+                        <mat-form-field>
+                        <mat-select fullWidth name="project_id" [(ngModel)]="userRequest.meta.project_id"
                             #project_id=ngModel style="text-transform: capitalize">
-                            <nb-option [value]="">Select</nb-option>
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                            <mat-option [value]="">Select</mat-option>
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success" size="medium" 
                     [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
@@ -93,7 +97,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

@@ -1,6 +1,6 @@
-<nb-card>
-  <nb-tabset fullWidth>
-    <nb-tab [tabTitle]="'DASHBOARD.ORDERS' | translate">
+<mat-card>
+  <mat-tab-group fullWidth>
+    <mat-tab [tabTitle]="'DASHBOARD.ORDERS' | translate">
       <div class="chart-container">
         <ngx-chart-panel-summary [summary]="chartPanelSummary"></ngx-chart-panel-summary>
         <ngx-chart-panel-header [type]="period"
@@ -9,6 +9,6 @@
         </ngx-chart-panel-header>
         <ngx-orders-chart #ordersChart [ordersChartData]="ordersChartData"></ngx-orders-chart>
       </div>
-    </nb-tab>
-  </nb-tabset>
-</nb-card>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

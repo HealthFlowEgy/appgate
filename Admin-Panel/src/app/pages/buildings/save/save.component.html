@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveBuilding()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'BUILDING.FIELDS.TITLE.LABEL' | translate }}</label>
@@ -15,11 +15,13 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'BUILDING.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="project_id" [(ngModel)]="buildingRequest.project_id"
+                        <mat-form-field>
+                        <mat-select fullWidth name="project_id" [(ngModel)]="buildingRequest.project_id"
                             #project_id=ngModel style="text-transform: capitalize">
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of buildingError.project_id">{{error}}</label>
                     </div>
 
@@ -34,7 +36,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

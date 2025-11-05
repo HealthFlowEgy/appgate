@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="savePaymentmethod()" #form="ngForm">
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'PAYMENTMETHOD.FIELDS.TITLE.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'PAYMENTMETHOD.FIELDS.TITLE.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div [formGroup]="titleGroupForm">
                                         <div formArrayName="items">
                                             <div class="form-group"
@@ -22,16 +24,13 @@
                                     </div>
                                     <label class="error text-danger"
                                         *ngFor="let error of paymentmethodError.title_translations">{{error}}</label>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.SLUG.LABEL' | translate }}</label>
-                        &nbsp;<nb-icon icon="info-outline"
-                            nbTooltip="Must be unique, all small letter, no space. Example - test-cod"
-                            nbTooltipStatus="info" status="info">
-                        </nb-icon>
+                        &nbsp;<mat-icon matTooltip="Must be unique, all small letter, no space. Example - test-cod">info</mat-icon>
                         <input type="text" nbInput fullWidth placeholder="Slug" name="slug"
                             [(ngModel)]="paymentmethodRequest.slug" #slug=ngModel required>
                         <label [hidden]="slug.valid || slug.pristine" class="error text-danger">
@@ -47,18 +46,20 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.ENABLED.LABEL' | translate }}</label>
-                        <nb-checkbox class="form-control" name="enabled" nbInput fullWidth [checked]="paymentmethodRequest.enabled"
-                            (checkedChange)="onEnabledChange($event)">Enabled?</nb-checkbox>
+                        <mat-checkbox class="form-control" name="enabled" nbInput fullWidth [checked]="paymentmethodRequest.enabled"
+                            (checkedChange)="onEnabledChange($event)">Enabled?</mat-checkbox>
                         <label class="error text-danger"
                             *ngFor="let error of paymentmethodError.enabled">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.TYPE.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="type" id="type" [(ngModel)]="paymentmethodRequest.type"
+                        <mat-form-field>
+                        <mat-select fullWidth name="type" id="type" [(ngModel)]="paymentmethodRequest.type"
                             #status=ngModel style="text-transform:capitalize">
-                            <nb-option *ngFor="let type of typeList" [value]="type">{{ type }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let type of typeList" [value]="type">{{ type }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of paymentmethodError.type">{{error}}</label>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
@@ -70,7 +71,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

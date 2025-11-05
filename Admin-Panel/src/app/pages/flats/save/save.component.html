@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveFlat()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'FLAT.FIELDS.TITLE.LABEL' | translate }}</label>
@@ -15,19 +15,23 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'FLAT.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth (selectedChange)="onProjectChange($event)" style="text-transform: capitalize" [selected]="flat?.building?.project?.id">
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                        <mat-form-field>
+                        <mat-select fullWidth (selectedChange)="onProjectChange($event)" style="text-transform: capitalize" [selected]="flat?.building?.project?.id">
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     </div>
 
                     <div class="form-group">
                         <label>{{ 'FLAT.FIELDS.BUILDING.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="building_id" [(ngModel)]="flatRequest.building_id"
+                        <mat-form-field>
+                        <mat-select fullWidth name="building_id" [(ngModel)]="flatRequest.building_id"
                             #building_id=ngModel style="text-transform: capitalize">
-                            <nb-option *ngFor="let building of buildings" [value]="building.id">
-                                {{ building.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let building of buildings" [value]="building.id">
+                                {{ building.title }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of flatError.building_id">{{error}}</label>
                     </div>
 
@@ -42,7 +46,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

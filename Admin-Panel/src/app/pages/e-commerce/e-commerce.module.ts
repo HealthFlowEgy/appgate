@@ -15,6 +15,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 import { ThemeModule } from '../../@theme/theme.module';
+import { MaterialModule } from '../../@core/material/material.module';
 import { ECommerceComponent } from './e-commerce.component';
 // import { ChartModule } from 'angular2-chartjs';
 
@@ -28,6 +29,7 @@ import { OrdersMapComponent } from './orders-map/orders-map.component';
 
 @NgModule({
   imports: [
+    MaterialModule,
     ThemeModule,
     NbCardModule,
     NbUserModule,

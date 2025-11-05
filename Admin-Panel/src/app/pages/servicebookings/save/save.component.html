@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveServicebooking()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'SERVICEBOOKING.FIELDS.DETAILS.LABEL' | translate }}</label>
@@ -30,11 +30,13 @@
 
                     <div class="form-group">
                         <label>{{ 'SERVICEBOOKING.FIELDS.STATUS.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="status" id="status" [(ngModel)]="servicebookingRequest.status"
+                        <mat-form-field>
+                        <mat-select fullWidth name="status" id="status" [(ngModel)]="servicebookingRequest.status"
                             #status=ngModel style="text-transform:capitalize">
-                            <nb-option *ngFor="let status of statusList" [value]="status">{{ status }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of servicebookingError.status">{{error}}</label>
                     </div>
 
@@ -49,7 +51,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>
