@@ -22,3 +22,7 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 Route::get('/', 'HomeController@index');
+
+// Health check routes
+Route::get('/health', 'HealthCheckController@index');
+Route::get('/health/detailed', 'HealthCheckController@detailed');

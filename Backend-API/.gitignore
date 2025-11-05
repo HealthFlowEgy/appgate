@@ -42,3 +42,29 @@ public/storage
 public/*.zip
 
 stats/
+
+# Logs
+/storage/logs/*.log
+
+# Testing
+.phpunit.cache
+coverage/
+.phpunit.result.cache
+
+# Telescope
+/public/vendor/telescope
+
+# Backup files
+*.sql
+*.backup
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
+
+# OS files
+Thumbs.db
+
+# Build artifacts
+/public/hot
