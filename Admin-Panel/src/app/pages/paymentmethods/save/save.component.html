@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="savePaymentmethod()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'PAYMENTMETHOD.FIELDS.TITLE.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="titleGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getTitleItems().controls; let i=index">
+                                                <label>{{ 'PAYMENTMETHOD.FIELDS.TITLE.LABEL' | translate }}
+                                                    <span
+                                                        class="language-label">{{ languages[i] | languageTitle }}</span></label>
+                                                <input type="text" nbInput fullWidth required
+                                                    formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of paymentmethodError.title_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PAYMENTMETHOD.FIELDS.SLUG.LABEL' | translate }}</label>
+                        &nbsp;<nb-icon icon="info-outline"
+                            nbTooltip="Must be unique, all small letter, no space. Example - test-cod"
+                            nbTooltipStatus="info" status="info">
+                        </nb-icon>
+                        <input type="text" nbInput fullWidth placeholder="Slug" name="slug"
+                            [(ngModel)]="paymentmethodRequest.slug" #slug=ngModel required>
+                        <label [hidden]="slug.valid || slug.pristine" class="error text-danger">
+                            {{ 'PAYMENTMETHOD.FIELDS.SLUG.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of paymentmethodError.slug">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PAYMENTMETHOD.FIELDS.META.LABEL' | translate }}</label>
+                        <textarea nbInput fullWidth placeholder="Meta" name="meta"
+                            [(ngModel)]="paymentmethodRequest.meta" #meta=ngModel></textarea>
+                        <label class="error text-danger" *ngFor="let error of paymentmethodError.meta">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PAYMENTMETHOD.FIELDS.ENABLED.LABEL' | translate }}</label>
+                        <nb-checkbox class="form-control" name="enabled" nbInput fullWidth [checked]="paymentmethodRequest.enabled"
+                            (checkedChange)="onEnabledChange($event)">Enabled?</nb-checkbox>
+                        <label class="error text-danger"
+                            *ngFor="let error of paymentmethodError.enabled">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PAYMENTMETHOD.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="type" id="type" [(ngModel)]="paymentmethodRequest.type"
+                            #status=ngModel style="text-transform:capitalize">
+                            <nb-option *ngFor="let type of typeList" [value]="type">{{ type }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of paymentmethodError.type">{{error}}</label>
+                    </div>
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

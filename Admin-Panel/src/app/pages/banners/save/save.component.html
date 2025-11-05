@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveBanner()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'BANNER.FIELDS.TITLE.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="titleGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getTitleItems().controls; let i=index">
+                                                <label>{{ 'BANNER.FIELDS.TITLE.LABEL' | translate }} <span
+                                                        class="language-label">{{ languages[i] | languageTitle }}</span></label>
+                                                <input type="text" nbInput fullWidth required
+                                                    formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of bannerError.title_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'BANNER.FIELDS.SORT_ORDER.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Sort Order" name="sort_order"
+                            [(ngModel)]="bannerRequest.sort_order" #sort_order=ngModel required>
+                        <label [hidden]="sort_order.valid || sort_order.pristine" class="error text-danger">
+                            {{ 'BANNER.FIELDS.SORT_ORDER.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of bannerError.sort_order">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'BANNER.FIELDS.IMAGE.LABEL' | translate }}</label>
+                        <input type="file" nbInput fullWidth (change)="onImageChanged($event)">
+                        <a *ngIf="banner?.mediaurls?.images?.length > 0"
+                            [href]="banner?.mediaurls?.images[0]?.default"
+                            target="_blank">{{ banner?.mediaurls?.images[0]?.default }}</a>
+                        <label class="error text-danger" *ngFor="let error of bannerError.image">{{error}}</label>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="bannerRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

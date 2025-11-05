@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveCategory()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'CATEGORY.FIELDS.TITLE.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="titleGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getTitleItems().controls; let i=index">
+                                                <label>{{ 'CATEGORY.FIELDS.TITLE.LABEL' | translate }} <span
+                                                        class="language-label">{{ languages[i] | languageTitle }}</span></label>
+                                                <input type="text" nbInput fullWidth required
+                                                    formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of categoryError.title_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'CATEGORY.FIELDS.SLUG.LABEL' | translate }}</label>
+                        &nbsp;<nb-icon icon="info-outline"
+                            nbTooltip="Must be unique, all small letter, no space. Example - test-category"
+                            nbTooltipStatus="info" status="info">
+                        </nb-icon>
+                        <input type="text" nbInput fullWidth placeholder="Slug" name="slug"
+                            [(ngModel)]="categoryRequest.slug" #slug=ngModel required>
+                        <label [hidden]="slug.valid || slug.pristine" class="error text-danger">
+                            {{ 'CATEGORY.FIELDS.SLUG.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of categoryError.slug">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'CATEGORY.FIELDS.SORT_ORDER.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Sort Order" name="sort_order"
+                            [(ngModel)]="categoryRequest.sort_order" #sort_order=ngModel required>
+                        <label [hidden]="sort_order.valid || sort_order.pristine" class="error text-danger">
+                            {{ 'CATEGORY.FIELDS.SORT_ORDER.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of categoryError.sort_order">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'CATEGORY.FIELDS.PARENT.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="parent_id" [(ngModel)]="categoryRequest.parent_id"
+                            #parent_id=ngModel style="text-transform: capitalize">
+                            <nb-option *ngFor="let parentCategory of parentCategories" [value]="parentCategory.id">
+                                {{ parentCategory.title }}</nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of categoryError.parent_id">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'CATEGORY.FIELDS.IMAGE.LABEL' | translate }}</label>
+                        <input type="file" nbInput fullWidth (change)="onImageChanged($event)">
+                        <a *ngIf="category?.mediaurls?.images?.length > 0"
+                            [href]="category?.mediaurls?.images[0]?.default"
+                            target="_blank">{{ category?.mediaurls?.images[0]?.default }}</a>
+                        <label class="error text-danger" *ngFor="let error of categoryError.image">{{error}}</label>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="categoryRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

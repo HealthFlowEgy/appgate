@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-header>{{ 'COMMON.META' | translate }}</nb-card-header>
+            <nb-card-body>
+                <div [formGroup]="metaForm">
+                    <div formArrayName="metafields">
+                        <div *ngFor="let alias of metafields.controls; let i=index" class="form-group">
+                            <div [formGroupName]="i">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Key</label>
+                                            <input type="text" nbInput fullWidth formControlName="key">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label>Value</label>
+                                            <input *ngIf="!listItems[metafields.controls[i].value.key]; else scopeSelect" type="text"
+                                                nbInput fullWidth formControlName="value">
+                                            <ng-template #scopeSelect>
+                                                <nb-select fullWidth
+                                                    style="text-transform:capitalize" (selectedChange)="selectionChanged($event, metafields.controls[i].value.key)" [(selected)]="meta[metafields.controls[i].value.key]">
+                                                    <nb-option *ngFor="let item of listItems[metafields.controls[i].value.key]" [value]="item">
+                                                        {{ item }} 
+                                                    </nb-option>
+                                                </nb-select>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"><nb-icon icon="close-outline" (click)="deleteItem(i)"></nb-icon></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" nbButton status="info" (click)="addMetaField()">{{ 'COMMON.META_ADD' |
+                            translate }}</button>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

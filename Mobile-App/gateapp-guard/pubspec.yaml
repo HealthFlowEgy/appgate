@@ -1,0 +1,88 @@
+name: gateapp_guard
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.1+2
+
+environment:
+  sdk: '>=3.0.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.5
+  animation_wrappers: ^3.0.0
+  flutter_bloc: ^8.1.3
+  shared_preferences: ^2.2.0
+  slider_button: ^2.0.0
+  flutter_native_splash: ^2.3.2
+  retrofit: ^4.0.1
+  dio: ^5.3.2
+  pretty_dio_logger: ^1.3.1
+  json_annotation: ^4.8.1
+  url_launcher: ^6.1.12
+  cached_network_image: ^3.3.1
+  #onesignal_flutter: ^5.0.0
+  onesignal_flutter: ^3.5.1
+  device_info_plus: ^9.0.3
+  ndialog: ^4.3.1
+  libphonenumber: ^2.0.2
+  fluttertoast: ^8.2.2
+  country_code_picker: ^3.0.0
+  image_cropper: ^4.0.1
+  image_picker: ^1.0.2
+  file_picker: ^5.3.3
+  permission_handler: ^10.4.3
+  android_path_provider: ^0.3.0
+  path_provider: ^2.1.0
+  photo_view: ^0.14.0
+  qr_code_scanner: ^1.0.1
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.8.0
+  firebase_database: ^10.2.5
+  firebase_storage: 11.6.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.6
+  json_serializable: ^6.7.1
+  retrofit_generator: ^7.0.8
+  flutter_lints: ^2.0.1
+  flutter_launcher_icons: ^0.13.1
+
+flutter_native_splash:
+  image: assets/app_splash.png
+  #background_image: assets/app_splash.png
+  color: "#FFFFFF"
+  android: true
+  ios: true
+  android_gravity: center
+  ios_content_mode: scaleAspectFill
+  remove_alpha_ios: true
+  android_12:
+    image: assets/android12splash.png
+    color: "#FFFFFF"
+    icon_background_color: "#FFFFFF"
+
+flutter_icons:
+  android: "ic_launcher"
+  ios: true
+  image_path: "assets/app_icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/visitor_types/
+    - assets/icons/
+  fonts:
+    - family: ProductSans
+      fonts:
+        - asset: assets/fonts/ProductSans-Regular.ttf
+        - asset: assets/fonts/ProductSans-Medium.ttf
+        - asset: assets/fonts/ProductSans-Bold.ttf

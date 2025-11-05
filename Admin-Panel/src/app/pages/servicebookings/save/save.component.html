@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveServicebooking()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.DETAILS.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="servicebooking.details" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.SERVICE.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="servicebooking?.service?.title" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.DATE.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="servicebooking.date" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.TIME_FROM.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="servicebooking.time_from" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="servicebooking?.project?.title" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.FLAT.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="servicebooking?.flat?.title" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ 'SERVICEBOOKING.FIELDS.STATUS.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="status" id="status" [(ngModel)]="servicebookingRequest.status"
+                            #status=ngModel style="text-transform:capitalize">
+                            <nb-option *ngFor="let status of statusList" [value]="status">{{ status }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of servicebookingError.status">{{error}}</label>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="servicebooking.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

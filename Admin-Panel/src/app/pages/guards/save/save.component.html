@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveGuard()" #form="ngForm">
+
+                    <div *ngIf="!editId" class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'GUARD.FIELDS.USER.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="form-group">
+                                        <label>{{ 'USER.NAME.LABEL' | translate }}</label>
+                                        <input type="email" nbInput fullWidth placeholder="Name" name="name"
+                                            [(ngModel)]="guardRequest.name" #name=ngModel required>
+                                        <label [hidden]="name.valid || name.pristine" class="error text-danger">
+                                            {{ 'USER.NAME.VALIDATION' | translate }}
+                                        </label>
+                                        <label class="error text-danger"
+                                            *ngFor="let error of guardError.name">{{error}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ 'USER.MOBILE_NUMBER.LABEL' | translate }}</label>
+                                        <input type="mobile_number" nbInput fullWidth placeholder="Mobile Number"
+                                            name="mobile_number" [(ngModel)]="guardRequest.mobile_number"
+                                            #mobile_number=ngModel required>
+                                        <label [hidden]="mobile_number.valid || mobile_number.pristine"
+                                            class="error text-danger">
+                                            {{ 'USER.MOBILE_NUMBER.VALIDATION' | translate }}
+                                        </label>
+                                        <label class="error text-danger"
+                                            *ngFor="let error of guardError.mobile_number">{{error}}</label>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'GUARD.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <nb-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
+                            style="text-transform: capitalize" [(ngModel)]="guardRequest.project_id"
+                            #project_id=ngModel>
+                            <nb-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</nb-option>
+                        </nb-select>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="guardRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

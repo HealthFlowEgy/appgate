@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveVisitorlog()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.CODE.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.code" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.type" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.NAME.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.CONTACT.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.contact" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.COMPANY_NAME.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.company_name" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.VEHICLE_NUMBER.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.vehicle_number" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.PAX.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.pax" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.INTIME.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.intime" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.OUTTIME.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog.outtime" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.USER.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog?.user?.mobile_number" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog?.project?.title" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.BUILDING.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog?.building?.title" />
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.FLAT.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="visitorlog?.flat?.title" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ 'VISITORLOG.FIELDS.STATUS.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="status" id="status" [(ngModel)]="visitorlogRequest.status"
+                            #status=ngModel style="text-transform:capitalize">
+                            <nb-option *ngFor="let status of statusList" [value]="status">{{ status }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of visitorlogError.status">{{error}}</label>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="visitorlog.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

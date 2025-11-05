@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveUser()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'USER.NAME.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Name" name="name" [(ngModel)]="userRequest.name" #name=ngModel required>
+                        <label [hidden]="name.valid || name.pristine"
+                                class="error text-danger">
+                                {{ 'USER.NAME.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of userError.name">{{error}}</label>                        
+                    </div>                                    
+                    <div class="form-group">
+                        <label>{{ 'USER.EMAIL.LABEL' | translate }}</label>
+                        <input type="email" nbInput fullWidth placeholder="Email" name="email" [(ngModel)]="userRequest.email" #email=ngModel required>
+                        <label [hidden]="email.valid || email.pristine"
+                                class="error text-danger">
+                                {{ 'USER.EMAIL.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of userError.email">{{error}}</label>                        
+                    </div>                                    
+                    <div class="form-group">
+                        <label>{{ 'USER.MOBILE_NUMBER.LABEL' | translate }}</label>
+                        <input type="mobile_number" nbInput fullWidth placeholder="Mobile Number" name="mobile_number" [(ngModel)]="userRequest.mobile_number" #mobile_number=ngModel required>
+                        <label [hidden]="mobile_number.valid || mobile_number.pristine"
+                                class="error text-danger">
+                                {{ 'USER.MOBILE_NUMBER.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of userError.mobile_number">{{error}}</label>                        
+                    </div>                  
+                    <div class="form-group">
+                        <label>{{ 'USER.MOBILE_VERIFIED.LABEL' | translate }}</label>
+                        <nb-checkbox class="form-control" name="mobile_verified" nbInput fullWidth [checked]="userRequest.mobile_verified" (checkedChange)="onMobileVerifiedChange($event)">{{ 'USER.MOBILE_VERIFIED.LABEL' | translate }}?</nb-checkbox>
+                        <label class="error text-danger" *ngFor="let error of userError.mobile_verified">{{error}}</label>                        
+                    </div>                                                      
+                    <div class="form-group">
+                        <label>{{ 'USER.PASSWORD.LABEL' | translate }}</label>
+                        <input type="password" nbInput fullWidth id="password" placeholder="Password" name="password" [(ngModel)]="userRequest.password" #password=ngModel [required]="!isEdit">
+                        <label [hidden]="password.valid || password.pristine"
+                                class="error text-danger">
+                                {{ 'USER.PASSWORD.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of userError.password">{{error}}</label>                        
+                    </div>                                                        
+                    <div class="form-group">
+                        <label>{{ 'USER.ROLES.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="roles" multiple [(ngModel)]="userRequest.roles" #roles=ngModel
+                        style="text-transform: capitalize">
+                            <nb-option *ngFor="let userRole of userRoles" [value]="userRole.name">{{ formatRole(userRole.name) }}</nb-option>
+                        </nb-select>                        
+                        <label class="error text-danger" *ngFor="let error of userError.roles">{{error}}</label>                        
+                    </div>          
+                    <div class="form-group">
+                        <label>{{ 'USER.IMAGE.LABEL' | translate }}</label>
+                        <input type="file" nbInput fullWidth (change)="onImageChanged($event)">                        
+                        <label class="error text-danger" *ngFor="let error of userError.image">{{error}}</label>
+                    </div>       
+                    <div class="form-group">
+                        <label>{{ 'USER.LANGUAGE.LABEL' | translate }}</label>
+                        <input type="language" nbInput fullWidth placeholder="Language" name="language" [(ngModel)]="userRequest.language" #language=ngModel required>
+                        <label [hidden]="language.valid || language.pristine"
+                                class="error text-danger">
+                                {{ 'USER.LANGUAGE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of userError.language">{{error}}</label>                        
+                    </div>      
+                    <!-- <div class="form-group">
+                        <label>{{ 'USER.BALANCE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Balance" name="balance" [(ngModel)]="userRequest.balance" #balance=ngModel required>
+                        <label [hidden]="balance.valid || balance.pristine"
+                                class="error text-danger">
+                                {{ 'USER.BALANCE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of userError.balance">{{error}}</label>                        
+                    </div>-->
+                    <div class="form-group">
+                        <label>{{ 'USER.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="project_id" [(ngModel)]="userRequest.meta.project_id"
+                            #project_id=ngModel style="text-transform: capitalize">
+                            <nb-option [value]="">Select</nb-option>
+                            <nb-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</nb-option>
+                        </nb-select>
+                    </div>
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success" size="medium" 
+                    [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                    {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

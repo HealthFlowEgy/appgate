@@ -1,0 +1,10 @@
+<nb-card>
+  <nb-card-header>
+    {{ 'COMPLAINTTYPE.LABELS.LIST' | translate }}
+  </nb-card-header>
+
+  <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="danger">
+    <angular2-smart-table [settings]="settings" [source]="source" (delete)="onDeleteConfirm($event)" (edit)="edit($event)">
+    </angular2-smart-table>
+  </nb-card-body>
+</nb-card>

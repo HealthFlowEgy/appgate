@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveProject()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'PROJECT.FIELDS.TITLE.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Title" name="title"
+                            [(ngModel)]="projectRequest.title" #title=ngModel required>
+                        <label [hidden]="title.valid || title.pristine" class="error text-danger">
+                            {{ 'PROJECT.FIELDS.TITLE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of projectError.title">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROJECT.FIELDS.ADDRESS.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Address" name="address"
+                            [(ngModel)]="projectRequest.address" #address=ngModel>
+                        <label [hidden]="address.valid || address.pristine" class="error text-danger">
+                            {{ 'PROJECT.FIELDS.ADDRESS.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of projectError.address">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROJECT.FIELDS.LATITUDE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Latitude" name="latitude"
+                            [(ngModel)]="projectRequest.latitude" #latitude=ngModel>
+                        <label [hidden]="latitude.valid || latitude.pristine" class="error text-danger">
+                            {{ 'PROJECT.FIELDS.LATITUDE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of projectError.latitude">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROJECT.FIELDS.LONGITUDE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Longitude" name="longitude"
+                            [(ngModel)]="projectRequest.longitude" #longitude=ngModel>
+                        <label [hidden]="longitude.valid || longitude.pristine" class="error text-danger">
+                            {{ 'PROJECT.FIELDS.LONGITUDE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of projectError.longitude">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROJECT.FIELDS.CITY.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="city_id" [(ngModel)]="projectRequest.city_id"
+                            #city_id=ngModel style="text-transform: capitalize">
+                            <nb-option *ngFor="let city of cityCategories" [value]="city.id">
+                                {{ city.title }}</nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of projectError.city_id">{{error}}</label>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="projectRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

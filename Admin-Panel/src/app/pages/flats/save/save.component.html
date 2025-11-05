@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveFlat()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'FLAT.FIELDS.TITLE.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Title" name="title"
+                            [(ngModel)]="flatRequest.title" #title=ngModel required>
+                        <label [hidden]="title.valid || title.pristine" class="error text-danger">
+                            {{ 'FLAT.FIELDS.TITLE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of flatError.title">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'FLAT.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <nb-select fullWidth (selectedChange)="onProjectChange($event)" style="text-transform: capitalize" [selected]="flat?.building?.project?.id">
+                            <nb-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</nb-option>
+                        </nb-select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{ 'FLAT.FIELDS.BUILDING.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="building_id" [(ngModel)]="flatRequest.building_id"
+                            #building_id=ngModel style="text-transform: capitalize">
+                            <nb-option *ngFor="let building of buildings" [value]="building.id">
+                                {{ building.title }}</nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of flatError.building_id">{{error}}</label>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="flatRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

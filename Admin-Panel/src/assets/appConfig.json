@@ -1,0 +1,9 @@
+{
+    "appName": "Gateapp",
+    "apiBaseUrl": "https://gateapp.vtlabs.dev/api/admin",
+    "mapsApiKey": "",
+    "developerName": "Verbose Techlabs LLP",
+    "developerUrl": "http://verbosetechlabs.com/",
+    "defaultCategoryScope": "default",
+    "defaultBannerScope": "default"
+}

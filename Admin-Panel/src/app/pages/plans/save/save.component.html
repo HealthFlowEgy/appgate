@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="savePlan()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'PLAN.FIELDS.NAME.LABEL' | translate }}</label>
+                        <textarea nbInput fullWidth placeholder="Name" name="name" [(ngModel)]="planRequest.name"
+                            #name=ngModel required></textarea>
+                        <label [hidden]="name.valid || name.pristine" class="error text-danger">
+                            {{ 'PLAN.FIELDS.NAME.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of planError.name">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PLAN.FIELDS.DESCRIPTION.LABEL' | translate }}</label>
+                        <textarea nbInput fullWidth placeholder="Description" name="description"
+                            [(ngModel)]="planRequest.description" #description=ngModel required></textarea>
+                        <label [hidden]="description.valid || description.pristine" class="error text-danger">
+                            {{ 'PLAN.FIELDS.DESCRIPTION.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of planError.description">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PLAN.FIELDS.PRICE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Price" name="price"
+                            [(ngModel)]="planRequest.price" #price=ngModel required />
+                        <label [hidden]="price.valid || price.pristine" class="error text-danger">
+                            {{ 'PLAN.FIELDS.PRICE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of planError.price">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PLAN.FIELDS.DURATION.LABEL' | translate }} {{ 'PLAN.FIELDS.DURATION_IN_DAYS.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Duration" name="duration"
+                            [(ngModel)]="planRequest.duration" #duration=ngModel required />
+                        <label [hidden]="duration.valid || duration.pristine" class="error text-danger">
+                            {{ 'PLAN.FIELDS.DURATION.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of planError.duration">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PLAN.FIELDS.LEADS_PER_DAY.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Leads per day" name="leads_per_day"
+                            [(ngModel)]="planRequest.leads_per_day" #leads_per_day=ngModel required />
+                        <label [hidden]="leads_per_day.valid || leads_per_day.pristine" class="error text-danger">
+                            {{ 'PLAN.FIELDS.LEADS_PER_DAY.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of planError.leads_per_day">{{error}}</label>
+                    </div>
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

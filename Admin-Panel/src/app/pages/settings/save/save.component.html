@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-md-12">
+      <nb-card>
+          <nb-card-header>{{ 'SETTINGS.LABELS.EDIT' | translate }}</nb-card-header>
+          <nb-card-body>
+              <form (ngSubmit)="updateSetting()">
+                  <div class="form-group" *ngFor="let setting of settings">
+                      <label for="{{ setting.key }}" style="text-transform: capitalize">{{ formatKey(setting.key) }}</label>
+                      <textarea nbInput fullWidth id="{{ setting.key }}" [(ngModel)]="updatedSettings[setting.key]" placeholder="{{ setting.key }}" name="{{ setting.key }}" ></textarea>
+                  </div>                                 
+                  <button type="submit" nbButton status="success" size="medium" 
+                  [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                  {{ 'COMMON.SAVE' | translate }}
+                  </button>
+              </form>
+          </nb-card-body>
+      </nb-card>
+  </div>
+</div>
+<!-- <form (ngSubmit)="updateSetting()">
+  <div class="row">
+    <div class="col-md-12">
+      <nb-card>
+        <nb-card-header> {{ 'SETTINGS.LABELS.EDIT' | translate }}</nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.CURRENCY.LABEL' | translate }}</label>
+                <input nbInput fullWidth [(ngModel)]="updatedSettings['currency_code']" name="currency_code" />
+              </div>
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.CURRENCY_ICON.LABEL' | translate }}</label>
+                <input nbInput fullWidth [(ngModel)]="updatedSettings['currency_icon']" name="currency_icon" />
+              </div>
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.TAX.LABEL' | translate }}</label>
+                <input type="number" nbInput fullWidth [(ngModel)]="updatedSettings['tax_in_percent']"
+                  name="tax_in_percent" />
+              </div>
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.REFERRAL_AMOUNT.LABEL' | translate }}</label>
+                <input type="number" nbInput fullWidth [(ngModel)]="updatedSettings['refer_amount']"
+                  name="refer_amount" />
+              </div>
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.DISTANCE_METRIC.LABEL' | translate }}</label>
+                <nb-select fullWidth name="distance_metric" id="distance_metric" nbInput fullWidth
+                  [(ngModel)]="updatedSettings['distance_metric']">
+                  <nb-option *ngFor="let distanceMetric of distanceMetrics" [value]="distanceMetric">{{ distanceMetric }}
+                  </nb-option>
+                </nb-select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.SUPPORT_EMAIL.LABEL' | translate }}</label>
+                <input nbInput fullWidth [(ngModel)]="updatedSettings['support_email']" name="support_email" />
+              </div>
+              <div class="form-group">
+                <label style="text-transform: capitalize">{{ 'SETTINGS.SUPPORT_PHONE.LABEL' | translate }}</label>
+                <input nbInput fullWidth [(ngModel)]="updatedSettings['support_phone']" name="support_phone" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <nb-card>
+                <nb-card-header>{{ 'SETTINGS.ADMIN_COMMISION.LABEL' | translate }}</nb-card-header>
+                <nb-card-body>
+                  <div class="form-group">
+                    <label>{{ 'SETTINGS.COMMISSION_TYPE.LABEL' | translate }}</label>
+                    <nb-select fullWidth name="admin_commision_type" id="admin_commision_type" nbInput fullWidth
+                      [(ngModel)]="updatedSettings['admin_commision_type']">
+                      <nb-option *ngFor="let commissionType of adminCommissionTypes" [value]="commissionType">
+                        {{ formatCommissionType(commissionType) }}</nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="form-group">
+                    <label>{{ 'SETTINGS.ADMIN_FEE.LABEL' | translate }}</label>
+                    <input type="number" nbInput fullWidth [(ngModel)]="updatedSettings['admin_commision_value']"
+                      name="admin_commision_value" />
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>{{ 'SETTINGS.PRIVACY_POLICY.LABEL' | translate }}</label>
+                <textarea nbInput fullWidth id="privacy_policy" [(ngModel)]="updatedSettings[privacy_policy]"
+                  placeholder="{{ setting.key }}" name="{{ setting.key }}"></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" nbButton status="primary" size="medium" [nbSpinner]="showProgressButton"
+            nbSpinnerStatus="primary" nbSpinnerSize="small" nbSpinnerMessage="Saving">
+            {{ 'COMMON.SAVE' | translate }}
+          </button>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</form> -->

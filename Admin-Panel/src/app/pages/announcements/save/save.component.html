@@ -1,0 +1,119 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveAnnouncement()" #form="ngForm">
+                    <div class="form-group">
+                        <label>{{ 'ANNOUNCEMENT.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="type" id="type" [(ngModel)]="announcementRequest.type"
+                            #type=ngModel style="text-transform:capitalize" required>
+                            <nb-option *ngFor="let type of typesList" [value]="type">{{ type }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of announcementError.type">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'ANNOUNCEMENT.FIELDS.MESSAGE.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Message" name="message"
+                            [(ngModel)]="announcementRequest.message" #message=ngModel required>
+                        <label [hidden]="message.valid || message.pristine" class="error text-danger">
+                            {{ 'ANNOUNCEMENT.FIELDS.MESSAGE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of announcementError.message">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'ANNOUNCEMENT.FIELDS.POSTED_BY.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Posted By" name="posted_by"
+                            [(ngModel)]="announcementRequest.posted_by" #posted_by=ngModel required>
+                        <label [hidden]="posted_by.valid || posted_by.pristine" class="error text-danger">
+                            {{ 'ANNOUNCEMENT.FIELDS.POSTED_BY.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of announcementError.posted_by">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'ANNOUNCEMENT.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="project_id" [(ngModel)]="announcementRequest.project_id"
+                            #project_id=ngModel style="text-transform: capitalize">
+                            <nb-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of announcementError.project_id">{{error}}</label>
+                    </div>
+
+                    <div *ngIf="announcementRequest.type == 'poll'">
+                        <div class="form-group">
+                            <label>{{ 'ANNOUNCEMENT.FIELDS.DUEDATE.LABEL' | translate }}</label>
+                            <input type="date" nbInput fullWidth placeholder="Due date" name="duedate"
+                                [(ngModel)]="announcementRequest.duedate" #duedate=ngModel>
+                            <label [hidden]="duedate.valid || duedate.pristine" class="error text-danger">
+                                {{ 'ANNOUNCEMENT.FIELDS.DUEDATE.VALIDATION' | translate }}
+                            </label>
+                            <label class="error text-danger"
+                                *ngFor="let error of announcementError.duedate">{{error}}</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nb-card [formGroup]="groupForm">
+                                    <nb-card-header>{{ 'ANNOUNCEMENT.FIELDS.OPTION.HEADER' | translate }}</nb-card-header>
+                                    <nb-card-body>
+                                        <div formArrayName="items"
+                                            *ngFor="let item of getFormGroupItems().controls; let i = index;">
+                                            <nb-card>
+                                                <nb-card-header>
+                                                    {{ 'ANNOUNCEMENT.FIELDS.OPTION.LABEL' | translate }} {{i + 1}}
+                                                    <button type="button" class="float-lg-right" nbButton status="danger"
+                                                        size="small" (click)="deleteGroup(i)">
+                                                        {{ 'ANNOUNCEMENT.FIELDS.OPTION.DELETE.LABEL' | translate }}
+                                                    </button>
+                                                </nb-card-header>
+                                                <nb-card-body>
+                                                    <div [formGroupName]="i">
+                                                        <div class="row">
+                                                            <div class="col-sm-8">
+                                                                <div class="form-group">
+                                                                    <label>{{ 'ANNOUNCEMENT.FIELDS.OPTION.TITLE.LABEL' |
+                                                                        translate }}</label>
+                                                                    <input type="text" nbInput fullWidth
+                                                                        formControlName="title">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4" *ngIf="editId">
+                                                                <div class="form-group">
+                                                                    <label>{{ 'ANNOUNCEMENT.FIELDS.OPTION.RESULT.LABEL' |
+                                                                        translate }}</label>
+                                                                    <input type="text" nbInput fullWidth
+                                                                        formControlName="selected_percentage" readonly>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </nb-card-body>
+                                            </nb-card>
+                                        </div>
+                                    </nb-card-body>
+                                </nb-card>
+                                <button type="button" class="float-lg-right" nbButton status="info" size="medium"
+                                    (click)="addNewGroup()">
+                                    {{ 'ANNOUNCEMENT.FIELDS.OPTION.ADD.LABEL' | translate }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="announcementRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

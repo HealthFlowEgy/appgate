@@ -1,0 +1,259 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveProvider()" #form="ngForm">
+                    <div *ngIf="!editId" class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'PROVIDER.FIELDS.USER.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="form-group">
+                                        <label>{{ 'USER.EMAIL.LABEL' | translate }}</label>
+                                        <input type="email" nbInput fullWidth placeholder="Email" name="email"
+                                            [(ngModel)]="providerRequest.email" #email=ngModel required>
+                                        <label [hidden]="email.valid || email.pristine" class="error text-danger">
+                                            {{ 'USER.EMAIL.VALIDATION' | translate }}
+                                        </label>
+                                        <label class="error text-danger"
+                                            *ngFor="let error of providerError.email">{{error}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ 'USER.MOBILE_NUMBER.LABEL' | translate }}</label>
+                                        <input type="mobile_number" nbInput fullWidth placeholder="Mobile Number"
+                                            name="mobile_number" [(ngModel)]="providerRequest.mobile_number"
+                                            #mobile_number=ngModel required>
+                                        <label [hidden]="mobile_number.valid || mobile_number.pristine"
+                                            class="error text-danger">
+                                            {{ 'USER.MOBILE_NUMBER.VALIDATION' | translate }}
+                                        </label>
+                                        <label class="error text-danger"
+                                            *ngFor="let error of providerError.mobile_number">{{error}}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ 'USER.PASSWORD.LABEL' | translate }}</label>
+                                        <input type="password" nbInput fullWidth id="password" placeholder="Password"
+                                            name="password" [(ngModel)]="providerRequest.password" #password=ngModel>
+                                        <label [hidden]="password.valid || password.pristine" class="error text-danger">
+                                            {{ 'USER.PASSWORD.VALIDATION' | translate }}
+                                        </label>
+                                        <label class="error text-danger"
+                                            *ngFor="let error of providerError.password">{{error}}</label>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'PROVIDER.FIELDS.NAME.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="nameGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getNameItems().controls; let i=index">
+                                                <label>{{ 'PROVIDER.FIELDS.NAME.LABEL' | translate }} <span
+                                                        class="language-label">{{ languages[i] | languageTitle }}</span></label>
+                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of providerError.name_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'PROVIDER.FIELDS.DETAILS.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="detailsGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getDetailsItems().controls; let i=index">
+                                                <label>{{ 'PROVIDER.FIELDS.DETAILS.LABEL' | translate }} <span
+                                                        class="language-label">{{ languages[i] | languageTitle }}</span></label>
+                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of providerError.details_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}</label>
+                        <nb-checkbox class="form-control" name="is_verified" nbInput fullWidth [checked]="providerRequest.is_verified" (checkedChange)="onIsVerifiedChange($event)">{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}?</nb-checkbox>
+                        <div *ngIf="providerRequest.meta?.documents?.national_id">
+                            <a [href]="providerRequest.meta?.documents?.national_id" target="_blank">{{ providerRequest.meta?.documents?.national_id }}</a>
+                        </div>
+                        <div *ngIf="providerRequest.meta?.documents?.provider_licence">
+                            <a [href]="providerRequest.meta?.documents?.provider_licence" target="_blank">{{ providerRequest.meta?.documents?.provider_licence }}</a>
+                        </div>
+                        <div *ngIf="providerRequest.meta?.documents?.medical_council_reg">
+                            <a [href]="providerRequest.meta?.documents?.medical_council_reg" target="_blank">{{ providerRequest.meta?.documents?.medical_council_reg }}</a>
+                        </div>
+                        <label class="error text-danger" *ngFor="let error of providerError.is_verified">{{error}}</label>                        
+                    </div>                                                      
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.FEE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Fee" name="fee"
+                            [(ngModel)]="providerRequest.fee" #fee=ngModel required>
+                        <label [hidden]="fee.valid || fee.pristine" class="error text-danger">
+                            {{ 'PROVIDER.FIELDS.FEE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger"
+                            *ngFor="let error of providerError.fee">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.CATEGORIES.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="categories" multiple [(ngModel)]="providerRequest.categories"
+                             style="text-transform: capitalize" (selectedChange)="onPrimaryCategoryChange($event)" required>
+                            <nb-option *ngFor="let category of categories" [value]="category.id">{{ category.title }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of providerError.categories">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.SUBCATEGORIES.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="subcategories" multiple [(ngModel)]="providerRequest.subcategories"
+                             style="text-transform: capitalize">
+                            <nb-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.title }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of providerError.subcategories">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.PLAN.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="plans" [(ngModel)]="providerRequest.plan_id" #plansNgModel=ngModel
+                            style="text-transform: capitalize">
+                            <nb-option *ngFor="let plan of plans" [value]="plan.id">{{ plan.name }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of providerError?.plan">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.ADDRESS.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Address" name="address"
+                            [(ngModel)]="providerRequest.address" #address=ngModel>
+                        <label [hidden]="address.valid || address.pristine" class="error text-danger">
+                            {{ 'PROVIDER.FIELDS.ADDRESS.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of providerError.address">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.LATITUDE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Latitude" name="latitude"
+                            [(ngModel)]="providerRequest.latitude" #latitude=ngModel>
+                        <label [hidden]="latitude.valid || latitude.pristine" class="error text-danger">
+                            {{ 'PROVIDER.FIELDS.LATITUDE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of providerError.latitude">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'PROVIDER.FIELDS.LONGITUDE.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Longitude" name="longitude"
+                            [(ngModel)]="providerRequest.longitude" #longitude=ngModel>
+                        <label [hidden]="longitude.valid || longitude.pristine" class="error text-danger">
+                            {{ 'PROVIDER.FIELDS.LONGITUDE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of providerError.longitude">{{error}}</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'PROVIDER.FIELDS.IMAGES.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="form-group" *ngFor="let image of [].constructor(5); let i = index;">
+                                        <label>{{ 'PROVIDER.FIELDS.IMAGES.LABEL' | translate }}</label>
+                                        <input type="file" nbInput fullWidth (change)="onImageChanged($event, i)">
+                                        <a *ngIf="provider?.mediaurls?.images && provider?.mediaurls?.images[i]"
+                                            [href]="provider?.mediaurls?.images[i]?.default"
+                                            target="_blank">{{ provider?.mediaurls?.images[i]?.default }}</a>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of providerError?.images">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card [formGroup]="groupForm">
+                                <nb-card-header>{{ 'PROVIDER.FIELDS.AVAILABILITY.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div formArrayName="items"
+                                        *ngFor="let item of getFormGroupItems().controls; let i = index;">
+                                        <nb-card>
+                                            <nb-card-header>
+                                                {{ 'PROVIDER.FIELDS.AVAILABILITY.LABEL' | translate }} {{i + 1}}
+                                                <button type="button" class="float-lg-right" nbButton status="danger"
+                                                    size="small" (click)="deleteGroup(i)">
+                                                    {{ 'PROVIDER.FIELDS.AVAILABILITY.DELETE.LABEL' | translate }}
+                                                </button>
+                                            </nb-card-header>
+                                            <nb-card-body>
+                                                <div [formGroupName]="i">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>{{ 'PROVIDER.FIELDS.AVAILABILITY.DAY.LABEL' | translate }}</label>
+                                                                <nb-select fullWidth style="text-transform:capitalize"
+                                                                    formControlName="days">
+                                                                    <nb-option *ngFor="let day of daysList"
+                                                                        [value]="day">{{ day }}
+                                                                    </nb-option>
+                                                                </nb-select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>{{ 'PROVIDER.FIELDS.AVAILABILITY.FROM.LABEL' | translate }}</label>
+                                                                <input type="time" nbInput fullWidth
+                                                                    formControlName="from">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group">
+                                                                <label>{{ 'PROVIDER.FIELDS.AVAILABILITY.TO.LABEL' | translate }}</label>
+                                                                <input type="time" nbInput fullWidth
+                                                                    formControlName="to">
+                                                            </div>
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>
+                                            </nb-card-body>
+                                        </nb-card>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                            <button type="button" class="float-lg-right" nbButton status="info" size="medium"
+                                (click)="addNewGroup()">
+                                {{ 'PROVIDER.FIELDS.AVAILABILITY.ADD.LABEL' | translate }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <ngx-metaeditor [(meta)]="providerRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveCoupon()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'COUPON.FIELDS.TITLE.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="titleGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getTitleItems().controls; let i=index">
+                                                <label>{{ 'COUPON.FIELDS.TITLE.LABEL' | translate }} <span
+                                                        class="language-label">{{ languages[i] | languageTitle
+                                                        }}</span></label>
+                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of couponError.title_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'COUPON.FIELDS.DETAIL.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div [formGroup]="detailGroupForm">
+                                        <div formArrayName="items">
+                                            <div class="form-group"
+                                                *ngFor="let alias of getDetailItems().controls; let i=index">
+                                                <label>{{ 'COUPON.FIELDS.DETAIL.LABEL' | translate }} <span
+                                                        class="language-label">{{ languages[i] | languageTitle
+                                                        }}</span></label>
+                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <label class="error text-danger"
+                                        *ngFor="let error of couponError.detail_translations">{{error}}</label>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'COUPON.FIELDS.CODE.LABEL' | translate }}</label>
+                        <input type="text" nbInput fullWidth placeholder="Code" name="code"
+                            [(ngModel)]="couponRequest.code" #code=ngModel required>
+                        <label [hidden]="code.valid || code.pristine" class="error text-danger">
+                            {{ 'COUPON.FIELDS.CODE.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of couponError.code">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'COUPON.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="type" id="type" [(ngModel)]="couponRequest.type"
+                            #type=ngModel style="text-transform:capitalize">
+                            <nb-option *ngFor="let typeItem of typeList" [value]="typeItem">{{ typeItem }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of couponError.type">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'COUPON.FIELDS.REWARD.LABEL' | translate }}</label>
+                        <input type="number" nbInput fullWidth placeholder="Reward" name="reward"
+                            [(ngModel)]="couponRequest.reward" #reward=ngModel required>
+                        <label [hidden]="reward.valid || reward.pristine" class="error text-danger">
+                            {{ 'COUPON.FIELDS.REWARD.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of couponError.reward">{{error}}</label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'COUPON.FIELDS.EXPIRES_AT.LABEL' | translate }}</label>
+                        <input type="date" nbInput fullWidth placeholder="Expires At" name="expires_at"
+                            [(ngModel)]="couponRequest.expires_at" #expires_at=ngModel required>
+                        <label [hidden]="expires_at.valid || expires_at.pristine" class="error text-danger">
+                            {{ 'COUPON.FIELDS.EXPIRES_AT.VALIDATION' | translate }}
+                        </label>
+                        <label class="error text-danger" *ngFor="let error of couponError.expires_at">{{error}}</label>
+                    </div>
+                    
+                    <ngx-metaeditor [(meta)]="couponRequest.meta"></ngx-metaeditor>
+
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

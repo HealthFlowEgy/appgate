@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xxl-12">
+    <ngx-transaction-analytics-charts></ngx-transaction-analytics-charts>
+  </div>
+</div>
+
+<nb-card>
+  <nb-card-header>
+    {{ 'TRANSACTION.LABELS.LIST' | translate }}
+  </nb-card-header>
+
+  <nb-card-body [nbSpinner]="loading" nbSpinnerStatus="danger">
+    <angular2-smart-table [settings]="settings" [source]="source" (delete)="onDeleteConfirm($event)" (edit)="edit($event)">
+    </angular2-smart-table>
+  </nb-card-body>
+</nb-card>

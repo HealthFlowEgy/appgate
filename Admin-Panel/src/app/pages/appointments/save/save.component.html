@@ -1,0 +1,171 @@
+<div class="row">
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+                <form (ngSubmit)="saveAppointment()" #form="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.USER.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="form-group">
+                                        <label>{{ 'APPOINTMENT.FIELDS.USER.MOBILE_NUMBER.LABEL' | translate }}</label>
+                                        <input readonly nbInput fullWidth [value]="appointment.resident?.user?.mobile_number" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ 'APPOINTMENT.FIELDS.USER.EMAIL.LABEL' | translate }}</label>
+                                                <input readonly nbInput fullWidth [value]="appointment.resident?.user?.email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ 'APPOINTMENT.FIELDS.USER.NAME.LABEL' | translate }}</label>
+                                                <input readonly nbInput fullWidth [value]="appointment.resident?.user?.name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'APPOINTMENT.FIELDS.PROVIDER.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="appointment?.amenity?.title" />
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.USER.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="form-group">
+                                        <label>{{ 'APPOINTMENT.FIELDS.USER.MOBILE_NUMBER.LABEL' | translate }}</label>
+                                        <input readonly nbInput fullWidth [value]="appointment.resident?.user?.mobile_number" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ 'APPOINTMENT.FIELDS.USER.EMAIL.LABEL' | translate }}</label>
+                                                <input readonly nbInput fullWidth [value]="appointment.resident?.user?.email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ 'APPOINTMENT.FIELDS.USER.NAME.LABEL' | translate }}</label>
+                                                <input readonly nbInput fullWidth [value]="appointment.resident?.user?.name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.SCHEDULE.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>{{ 'APPOINTMENT.FIELDS.DATE.LABEL' | translate }}</label>
+                                                        <input readonly nbInput fullWidth [value]="appointment.date" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>{{ 'APPOINTMENT.FIELDS.DATE_TO.LABEL' | translate }}</label>
+                                                        <input readonly nbInput fullWidth [value]="appointment.date_to" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>{{ 'APPOINTMENT.FIELDS.TIME_FROM.LABEL' | translate
+                                                            }}</label>
+                                                        <input readonly nbInput fullWidth
+                                                            [value]="appointment.time_from" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>{{ 'APPOINTMENT.FIELDS.TIME_TO.LABEL' | translate
+                                                            }}</label>
+                                                        <input readonly nbInput fullWidth
+                                                            [value]="appointment.time_to" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nb-card>
+                                <nb-card-header>{{ 'APPOINTMENT.FIELDS.PAYMENT.HEADER' | translate }}</nb-card-header>
+                                <nb-card-body>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>{{ 'APPOINTMENT.FIELDS.AMOUNT.LABEL' | translate }}</label>
+                                                <input readonly nbInput fullWidth [value]="appointment.amount" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>{{ 'APPOINTMENT.FIELDS.PAYMENT_METHOD.LABEL' | translate }}</label>
+                                            <input readonly nbInput fullWidth
+                                                [value]="appointment.payment?.payment_method?.title" />
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>{{ 'APPOINTMENT.FIELDS.PAYMENT_STATUS.LABEL' | translate }}</label>
+                                            <input readonly nbInput fullWidth [value]="appointment.payment?.status" />
+                                        </div>
+                                    </div>
+                                </nb-card-body>
+                            </nb-card>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'APPOINTMENT.FIELDS.CREATED_AT.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="appointment.created_at" />
+                    </div>
+                    <div *ngIf="appointment.meta?.reason" class="form-group">
+                        <label>{{ 'APPOINTMENT.FIELDS.META_REASON.LABEL' | translate }}</label>
+                        <input readonly nbInput fullWidth [value]="appointment.meta?.reason" />
+                    </div>
+                    <div *ngIf="appointment.meta?.records?.length > 0" class="form-group">
+                        <label>{{ 'APPOINTMENT.FIELDS.META_ATTACHMENTS.LABEL' | translate }}</label>
+                        <div *ngFor="let record of appointment.meta?.records" class="form-group">
+                            <a [href]="record.url">{{ record.title ? record.title : record.url }}</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'APPOINTMENT.FIELDS.STATUS.LABEL' | translate }}</label>
+                        <nb-select fullWidth name="status" id="status" [(ngModel)]="appointmentRequest.status"
+                            #status=ngModel style="text-transform:capitalize">
+                            <nb-option *ngFor="let appointmentStatus of appointmentStatusList"
+                                [value]="appointmentStatus">{{ appointmentStatus }}
+                            </nb-option>
+                        </nb-select>
+                        <label class="error text-danger" *ngFor="let error of appointmentError.status">{{error}}</label>
+                    </div>
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                        size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
+                        {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                    &nbsp;
+                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                        {{ 'COMMON.BACK' | translate }}
+                    </button>
+                </form>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
