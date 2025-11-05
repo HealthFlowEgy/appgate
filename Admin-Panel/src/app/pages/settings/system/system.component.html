@@ -35,19 +35,19 @@
                 <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.EMAIL_SETTINGS.ONESIGNAL_APP_ID_CUSTOMER.LABEL' | translate }}</label>
-                    <input nbInput fullWidth [(ngModel)]="env.ONESIGNAL_APP_ID_CUSTOMER"
+                    <input fullWidth [(ngModel)]="env.ONESIGNAL_APP_ID_CUSTOMER"
                       name="ONESIGNAL_APP_ID_CUSTOMER" />
                   </div>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.EMAIL_SETTINGS.ONESIGNAL_REST_API_CUSTOMER.LABEL' | translate }}</label>
-                    <input nbInput fullWidth [(ngModel)]="env.ONESIGNAL_REST_API_CUSTOMER"
+                    <input fullWidth [(ngModel)]="env.ONESIGNAL_REST_API_CUSTOMER"
                       name="ONESIGNAL_REST_API_CUSTOMER" />
                   </div>
                 </mat-card-content>
               </mat-card>
             </div>
           </div>
-          <button type="submit" nbButton status="success" size="medium" [nbSpinner]="showProgressButton"
+          <button type="submit" mat-flat-button color="accent" size="medium" [nbSpinner]="showProgressButton"
             nbSpinnerStatus="primary" nbSpinnerSize="small">
             {{ 'COMMON.SAVE' | translate }}
           </button>

@@ -13,14 +13,14 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Key</label>
-                                            <input type="text" nbInput fullWidth formControlName="key" class="form-control">
+                                            <input type="text" fullWidth formControlName="key" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Value</label>
                                             <input *ngIf="!listItems[metafields.controls[i].value.key]; else scopeSelect" type="text"
-                                                nbInput fullWidth formControlName="value" class="form-control">
+                                                fullWidth formControlName="value" class="form-control">
                                             <ng-template #scopeSelect>
                                                 <mat-form-field class="full-width">
                                                     <mat-select 

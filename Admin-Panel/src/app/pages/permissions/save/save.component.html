@@ -23,12 +23,12 @@
                         <label class="error text-danger" *ngFor="let error of permissionError.permissions">{{error}}</label>                        
                     </div>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

@@ -15,7 +15,7 @@
                       <div class="form-group" *ngFor="let alias of getTitleItems().controls; let i=index">
                         <label>{{ 'MEDIA.FIELDS.TITLE.LABEL' | translate }} <span class="language-label">{{ languages[i]
                             | languageTitle }}</span></label>
-                        <textarea nbInput fullWidth formControlName="{{i}}"></textarea>
+                        <textarea class="form-control" formControlName="{{i}}"></textarea>
                       </div>
                     </div>
                   </div>
@@ -46,7 +46,7 @@
           </div>
           <div class="form-group">
             <label>{{ 'MEDIA.FIELDS.CONTENT.LABEL' | translate }}</label>
-            <input type="text" nbInput fullWidth placeholder="Content Url" name="content_url"
+            <input type="text" class="form-control" placeholder="Content Url" name="content_url"
               [(ngModel)]="mediaRequest.content_url" #content_url=ngModel required>
             <label [hidden]="content_url.valid || content_url.pristine" class="error text-danger">
               {{ 'MEDIA.FIELDS.CONTENT.VALIDATION' | translate }}
@@ -61,7 +61,7 @@
                 <mat-card-content>
                   <div class="form-group" *ngFor="let image of [].constructor(5); let i = index;">
                     <label>{{ 'MEDIA.FIELDS.IMAGE.LABEL' | translate }}</label>
-                    <input type="file" nbInput fullWidth (change)="onImageChanged($event, i)">
+                    <input type="file" class="form-control" (change)="onImageChanged($event, i)">
                     <a *ngIf="media?.medialibrary?.images && media?.medialibrary?.images[i]"
                       [href]="media?.medialibrary?.images[i]?.default" target="_blank">{{
                       media?.medialibrary?.images[i]?.default }}</a>
@@ -81,15 +81,15 @@
                 <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'MEDIA.FIELDS.STATS.LIKES_COUNT.LABEL' | translate }}</label>
-                    <input type="text" readonly nbInput fullWidth [value]="media.likes_count">
+                    <input type="text" readonly class="form-control" [value]="media.likes_count">
                   </div>
                   <div class="form-group">
                     <label>{{ 'MEDIA.FIELDS.STATS.COMMENTS_COUNT.LABEL' | translate }}</label>
-                    <input type="text" readonly nbInput fullWidth [value]="media.comments_count">
+                    <input type="text" readonly class="form-control" [value]="media.comments_count">
                   </div>
                   <div class="form-group">
                     <label>{{ 'MEDIA.FIELDS.STATS.VIEWS_COUNT.LABEL' | translate }}</label>
-                    <input type="text" readonly nbInput fullWidth [value]="media.views_count">
+                    <input type="text" readonly class="form-control" [value]="media.views_count">
                   </div>
                 </mat-card-content>
               </mat-card>
@@ -105,19 +105,19 @@
     <mat-card-title>{{ 'COMMON.MORE_ACTIONS' | translate }}</mat-card-title>
   </mat-card-header>
                 <mat-card-content>
-                  <a [routerLink]="['/pages/comments/list']" [queryParams]="{media: editId}" nbButton
-                    status="info">View All Comments</a>
+                  <a [routerLink]="['/pages/comments/list']" [queryParams]="{media: editId}" mat-flat-button
+                    color="primary">View All Comments</a>
                 </mat-card-content>
               </mat-card>
             </div>
           </div>
 
-          <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+          <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
             size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
             {{ 'COMMON.SAVE' | translate }}
           </button>
           &nbsp;
-          <button type="button" nbButton status="danger" size="medium" (click)="back()">
+          <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
             {{ 'COMMON.BACK' | translate }}
           </button>
         </form>

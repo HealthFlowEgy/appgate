@@ -5,19 +5,19 @@
                 <form (ngSubmit)="saveComplaint()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'COMPLAINT.FIELDS.TYPE.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="complaint.type" />
+                        <input readonly class="form-control" [value]="complaint.type" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'COMPLAINT.FIELDS.MESSAGE.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="complaint.message" />
+                        <input readonly class="form-control" [value]="complaint.message" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'COMPLAINT.FIELDS.USER.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="complaint?.user?.mobile_number" />
+                        <input readonly class="form-control" [value]="complaint?.user?.mobile_number" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'COMPLAINT.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="complaint?.project?.title" />
+                        <input readonly class="form-control" [value]="complaint?.project?.title" />
                     </div>
 
                     <div class="form-group">
@@ -34,12 +34,12 @@
 
                     <ngx-metaeditor [(meta)]="complaint.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

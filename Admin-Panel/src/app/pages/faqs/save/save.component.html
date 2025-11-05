@@ -5,7 +5,7 @@
                 <form (ngSubmit)="saveFaq()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'FAQ.FIELDS.TITLE.LABEL' | translate }}</label>
-                        <textarea nbInput fullWidth placeholder="Title" name="title" [(ngModel)]="faqRequest.title" #title=ngModel required></textarea>
+                        <textarea class="form-control" placeholder="Title" name="title" [(ngModel)]="faqRequest.title" #title=ngModel required></textarea>
                         <label [hidden]="title.valid || title.pristine"
                                 class="error text-danger">
                                 {{ 'FAQ.FIELDS.TITLE.VALIDATION' | translate }}
@@ -14,7 +14,7 @@
                     </div>   
                     <div class="form-group">
                         <label>{{ 'FAQ.FIELDS.SHORT_DESCRIPTION.LABEL' | translate }}</label>
-                        <textarea nbInput fullWidth placeholder="Short_description" name="short_description" [(ngModel)]="faqRequest.short_description" #short_description=ngModel required></textarea>
+                        <textarea class="form-control" placeholder="Short_description" name="short_description" [(ngModel)]="faqRequest.short_description" #short_description=ngModel required></textarea>
                         <label [hidden]="short_description.valid || short_description.pristine"
                                 class="error text-danger">
                                 {{ 'FAQ.FIELDS.SHORT_DESCRIPTION.VALIDATION' | translate }}
@@ -23,19 +23,19 @@
                     </div>   
                     <div class="form-group">
                         <label>{{ 'FAQ.FIELDS.DESCRIPTION.LABEL' | translate }}</label>
-                        <textarea nbInput fullWidth placeholder="Description" name="description" [(ngModel)]="faqRequest.description" #description=ngModel required></textarea>
+                        <textarea class="form-control" placeholder="Description" name="description" [(ngModel)]="faqRequest.description" #description=ngModel required></textarea>
                         <label [hidden]="description.valid || description.pristine"
                                 class="error text-danger">
                                 {{ 'FAQ.FIELDS.DESCRIPTION.VALIDATION' | translate }}
                         </label>
                         <label class="error text-danger" *ngFor="let error of faqError.description">{{error}}</label>                        
                     </div>                                                                                                            
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success" size="medium" 
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent" size="medium" 
                     [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                     {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'ANNOUNCEMENT.FIELDS.MESSAGE.LABEL' | translate }}</label>
-                        <input type="text" nbInput fullWidth placeholder="Message" name="message"
+                        <input type="text" class="form-control" placeholder="Message" name="message"
                             [(ngModel)]="announcementRequest.message" #message=ngModel required>
                         <label [hidden]="message.valid || message.pristine" class="error text-danger">
                             {{ 'ANNOUNCEMENT.FIELDS.MESSAGE.VALIDATION' | translate }}
@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'ANNOUNCEMENT.FIELDS.POSTED_BY.LABEL' | translate }}</label>
-                        <input type="text" nbInput fullWidth placeholder="Posted By" name="posted_by"
+                        <input type="text" class="form-control" placeholder="Posted By" name="posted_by"
                             [(ngModel)]="announcementRequest.posted_by" #posted_by=ngModel required>
                         <label [hidden]="posted_by.valid || posted_by.pristine" class="error text-danger">
                             {{ 'ANNOUNCEMENT.FIELDS.POSTED_BY.VALIDATION' | translate }}
@@ -49,7 +49,7 @@
                     <div *ngIf="announcementRequest.type == 'poll'">
                         <div class="form-group">
                             <label>{{ 'ANNOUNCEMENT.FIELDS.DUEDATE.LABEL' | translate }}</label>
-                            <input type="date" nbInput fullWidth placeholder="Due date" name="duedate"
+                            <input type="date" class="form-control" placeholder="Due date" name="duedate"
                                 [(ngModel)]="announcementRequest.duedate" #duedate=ngModel>
                             <label [hidden]="duedate.valid || duedate.pristine" class="error text-danger">
                                 {{ 'ANNOUNCEMENT.FIELDS.DUEDATE.VALIDATION' | translate }}
@@ -70,7 +70,7 @@
                                                 <mat-card-header>
     <mat-card-title>
                                                     {{ 'ANNOUNCEMENT.FIELDS.OPTION.LABEL' | translate }} {{i + 1}}
-                                                    <button type="button" class="float-lg-right" nbButton status="danger"
+                                                    <button type="button" class="float-lg-right" mat-flat-button color="warn"
                                                         size="small" (click)="deleteGroup(i)">
                                                         {{ 'ANNOUNCEMENT.FIELDS.OPTION.DELETE.LABEL' | translate }}
                                                     </button>
@@ -83,7 +83,7 @@
                                                                 <div class="form-group">
                                                                     <label>{{ 'ANNOUNCEMENT.FIELDS.OPTION.TITLE.LABEL' |
                                                                         translate }}</label>
-                                                                    <input type="text" nbInput fullWidth
+                                                                    <input type="text" class="form-control"
                                                                         formControlName="title">
                                                                 </div>
                                                             </div>
@@ -91,7 +91,7 @@
                                                                 <div class="form-group">
                                                                     <label>{{ 'ANNOUNCEMENT.FIELDS.OPTION.RESULT.LABEL' |
                                                                         translate }}</label>
-                                                                    <input type="text" nbInput fullWidth
+                                                                    <input type="text" class="form-control"
                                                                         formControlName="selected_percentage" readonly>
                                                                 </div>
                                                             </div>
@@ -102,7 +102,7 @@
                                         </div>
                                     </mat-card-content>
                                 </mat-card>
-                                <button type="button" class="float-lg-right" nbButton status="info" size="medium"
+                                <button type="button" class="float-lg-right" mat-flat-button color="primary" size="medium"
                                     (click)="addNewGroup()">
                                     {{ 'ANNOUNCEMENT.FIELDS.OPTION.ADD.LABEL' | translate }}
                                 </button>
@@ -112,12 +112,12 @@
 
                     <ngx-metaeditor [(meta)]="announcementRequest.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
