@@ -30,10 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.SLUG.LABEL' | translate }}</label>
-                        &nbsp;<nb-icon icon="info-outline"
-                            nbTooltip="Must be unique, all small letter, no space. Example - test-cod"
-                            nbTooltipStatus="info" status="info">
-                        </nb-icon>
+                        &nbsp;<mat-icon matTooltip="Must be unique, all small letter, no space. Example - test-cod">info</mat-icon>
                         <input type="text" nbInput fullWidth placeholder="Slug" name="slug"
                             [(ngModel)]="paymentmethodRequest.slug" #slug=ngModel required>
                         <label [hidden]="slug.valid || slug.pristine" class="error text-danger">
