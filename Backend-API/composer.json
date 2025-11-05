@@ -140,9 +140,7 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "optimize-autoloader": true,
-        "gitlab-oauth": {
-            "gitlab.com": "glpat-IkeetA22QkzWrNEN3sUM7W86MQp1OmhmdmpyCw.01.121ampuou"
-        },
+
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }

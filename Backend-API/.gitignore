@@ -26,6 +26,7 @@ public/mix-manifest.json
 .env
 .env.*.php
 .env.php
+auth.json
 .sass-cache
 
 # IDE exclusions
