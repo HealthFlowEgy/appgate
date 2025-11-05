@@ -16,7 +16,7 @@
                                                 *ngFor="let alias of getTitleItems().controls; let i=index">
                                                 <label>{{ 'BANNER.FIELDS.TITLE.LABEL' | translate }} <span
                                                         class="language-label">{{ languages[i] | languageTitle }}</span></label>
-                                                <input type="text" nbInput fullWidth required
+                                                <input type="text" class="form-control" required
                                                     formControlName="{{i}}">
                                             </div>
                                         </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'BANNER.FIELDS.SORT_ORDER.LABEL' | translate }}</label>
-                        <input type="number" nbInput fullWidth placeholder="Sort Order" name="sort_order"
+                        <input type="number" class="form-control" placeholder="Sort Order" name="sort_order"
                             [(ngModel)]="bannerRequest.sort_order" #sort_order=ngModel required>
                         <label [hidden]="sort_order.valid || sort_order.pristine" class="error text-danger">
                             {{ 'BANNER.FIELDS.SORT_ORDER.VALIDATION' | translate }}
@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'BANNER.FIELDS.IMAGE.LABEL' | translate }}</label>
-                        <input type="file" nbInput fullWidth (change)="onImageChanged($event)">
+                        <input type="file" class="form-control" (change)="onImageChanged($event)">
                         <a *ngIf="banner?.mediaurls?.images?.length > 0"
                             [href]="banner?.mediaurls?.images[0]?.default"
                             target="_blank">{{ banner?.mediaurls?.images[0]?.default }}</a>
@@ -48,12 +48,12 @@
 
                     <ngx-metaeditor [(meta)]="bannerRequest.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

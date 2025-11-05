@@ -5,7 +5,7 @@
                 <form (ngSubmit)="savePaymentrequest()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.TITLE.LABEL' | translate }}</label>
-                        <input type="text" nbInput fullWidth placeholder="Title" name="title"
+                        <input type="text" class="form-control" placeholder="Title" name="title"
                             [(ngModel)]="paymentrequestRequest.title" #title=ngModel required>
                         <label [hidden]="title.valid || title.pristine" class="error text-danger">
                             {{ 'PAYMENTREQUEST.FIELDS.TITLE.VALIDATION' | translate }}
@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.AMOUNT.LABEL' | translate }}</label>
-                        <input type="number" nbInput fullWidth placeholder="Amount" name="amount"
+                        <input type="number" class="form-control" placeholder="Amount" name="amount"
                             [(ngModel)]="paymentrequestRequest.amount" #amount=ngModel required>
                         <label [hidden]="amount.valid || amount.pristine" class="error text-danger">
                             {{ 'PAYMENTREQUEST.FIELDS.AMOUNT.VALIDATION' | translate }}
@@ -25,7 +25,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.DUEDATE.LABEL' | translate }}</label>
-                        <input type="date" nbInput fullWidth placeholder="Duedate" name="duedate"
+                        <input type="date" class="form-control" placeholder="Duedate" name="duedate"
                             [(ngModel)]="paymentrequestRequest.duedate" #duedate=ngModel required>
                         <label [hidden]="duedate.valid || duedate.pristine" class="error text-danger">
                             {{ 'PAYMENTREQUEST.FIELDS.DUEDATE.VALIDATION' | translate }}
@@ -80,12 +80,12 @@
 
                     <ngx-metaeditor [(meta)]="paymentrequestRequest.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

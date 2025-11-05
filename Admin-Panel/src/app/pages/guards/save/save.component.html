@@ -13,7 +13,7 @@
                                 <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'USER.NAME.LABEL' | translate }}</label>
-                                        <input type="email" nbInput fullWidth placeholder="Name" name="name"
+                                        <input type="email" class="form-control" placeholder="Name" name="name"
                                             [(ngModel)]="guardRequest.name" #name=ngModel required>
                                         <label [hidden]="name.valid || name.pristine" class="error text-danger">
                                             {{ 'USER.NAME.VALIDATION' | translate }}
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{ 'USER.MOBILE_NUMBER.LABEL' | translate }}</label>
-                                        <input type="mobile_number" nbInput fullWidth placeholder="Mobile Number"
+                                        <input type="mobile_number" class="form-control" placeholder="Mobile Number"
                                             name="mobile_number" [(ngModel)]="guardRequest.mobile_number"
                                             #mobile_number=ngModel required>
                                         <label [hidden]="mobile_number.valid || mobile_number.pristine"
@@ -51,12 +51,12 @@
 
                     <ngx-metaeditor [(meta)]="guardRequest.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

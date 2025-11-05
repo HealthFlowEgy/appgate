@@ -5,57 +5,57 @@
                 <form (ngSubmit)="saveVisitorlog()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.CODE.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.code" />
+                        <input readonly class="form-control" [value]="visitorlog.code" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.TYPE.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.type" />
+                        <input readonly class="form-control" [value]="visitorlog.type" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.NAME.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.name" />
+                        <input readonly class="form-control" [value]="visitorlog.name" />
                     </div>
 
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.CONTACT.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.contact" />
+                        <input readonly class="form-control" [value]="visitorlog.contact" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.COMPANY_NAME.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.company_name" />
+                        <input readonly class="form-control" [value]="visitorlog.company_name" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.VEHICLE_NUMBER.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.vehicle_number" />
+                        <input readonly class="form-control" [value]="visitorlog.vehicle_number" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.PAX.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.pax" />
+                        <input readonly class="form-control" [value]="visitorlog.pax" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.INTIME.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.intime" />
+                        <input readonly class="form-control" [value]="visitorlog.intime" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.OUTTIME.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog.outtime" />
+                        <input readonly class="form-control" [value]="visitorlog.outtime" />
                     </div>
 
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.USER.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog?.user?.mobile_number" />
+                        <input readonly class="form-control" [value]="visitorlog?.user?.mobile_number" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog?.project?.title" />
+                        <input readonly class="form-control" [value]="visitorlog?.project?.title" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.BUILDING.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog?.building?.title" />
+                        <input readonly class="form-control" [value]="visitorlog?.building?.title" />
                     </div>
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.FLAT.LABEL' | translate }}</label>
-                        <input readonly nbInput fullWidth [value]="visitorlog?.flat?.title" />
+                        <input readonly class="form-control" [value]="visitorlog?.flat?.title" />
                     </div>
 
                     <div class="form-group">
@@ -72,12 +72,12 @@
 
                     <ngx-metaeditor [(meta)]="visitorlog.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

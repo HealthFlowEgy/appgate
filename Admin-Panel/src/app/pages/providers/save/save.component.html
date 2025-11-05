@@ -12,7 +12,7 @@
                                 <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'USER.EMAIL.LABEL' | translate }}</label>
-                                        <input type="email" nbInput fullWidth placeholder="Email" name="email"
+                                        <input type="email" class="form-control" placeholder="Email" name="email"
                                             [(ngModel)]="providerRequest.email" #email=ngModel required>
                                         <label [hidden]="email.valid || email.pristine" class="error text-danger">
                                             {{ 'USER.EMAIL.VALIDATION' | translate }}
@@ -22,7 +22,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{ 'USER.MOBILE_NUMBER.LABEL' | translate }}</label>
-                                        <input type="mobile_number" nbInput fullWidth placeholder="Mobile Number"
+                                        <input type="mobile_number" class="form-control" placeholder="Mobile Number"
                                             name="mobile_number" [(ngModel)]="providerRequest.mobile_number"
                                             #mobile_number=ngModel required>
                                         <label [hidden]="mobile_number.valid || mobile_number.pristine"
@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{ 'USER.PASSWORD.LABEL' | translate }}</label>
-                                        <input type="password" nbInput fullWidth id="password" placeholder="Password"
+                                        <input type="password" class="form-control" id="password" placeholder="Password"
                                             name="password" [(ngModel)]="providerRequest.password" #password=ngModel>
                                         <label [hidden]="password.valid || password.pristine" class="error text-danger">
                                             {{ 'USER.PASSWORD.VALIDATION' | translate }}
@@ -61,7 +61,7 @@
                                                 *ngFor="let alias of getNameItems().controls; let i=index">
                                                 <label>{{ 'PROVIDER.FIELDS.NAME.LABEL' | translate }} <span
                                                         class="language-label">{{ languages[i] | languageTitle }}</span></label>
-                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                                <input type="text" class="form-control" required formControlName="{{i}}">
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                                 *ngFor="let alias of getDetailsItems().controls; let i=index">
                                                 <label>{{ 'PROVIDER.FIELDS.DETAILS.LABEL' | translate }} <span
                                                         class="language-label">{{ languages[i] | languageTitle }}</span></label>
-                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                                <input type="text" class="form-control" required formControlName="{{i}}">
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}</label>
-                        <mat-checkbox class="form-control" name="is_verified" nbInput fullWidth [checked]="providerRequest.is_verified" (checkedChange)="onIsVerifiedChange($event)">{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}?</mat-checkbox>
+                        <mat-checkbox class="form-control" name="is_verified" class="form-control" [checked]="providerRequest.is_verified" (checkedChange)="onIsVerifiedChange($event)">{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}?</mat-checkbox>
                         <div *ngIf="providerRequest.meta?.documents?.national_id">
                             <a [href]="providerRequest.meta?.documents?.national_id" target="_blank">{{ providerRequest.meta?.documents?.national_id }}</a>
                         </div>
@@ -110,7 +110,7 @@
                     </div>                                                      
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.FEE.LABEL' | translate }}</label>
-                        <input type="number" nbInput fullWidth placeholder="Fee" name="fee"
+                        <input type="number" class="form-control" placeholder="Fee" name="fee"
                             [(ngModel)]="providerRequest.fee" #fee=ngModel required>
                         <label [hidden]="fee.valid || fee.pristine" class="error text-danger">
                             {{ 'PROVIDER.FIELDS.FEE.VALIDATION' | translate }}
@@ -153,7 +153,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.ADDRESS.LABEL' | translate }}</label>
-                        <input type="text" nbInput fullWidth placeholder="Address" name="address"
+                        <input type="text" class="form-control" placeholder="Address" name="address"
                             [(ngModel)]="providerRequest.address" #address=ngModel>
                         <label [hidden]="address.valid || address.pristine" class="error text-danger">
                             {{ 'PROVIDER.FIELDS.ADDRESS.VALIDATION' | translate }}
@@ -162,7 +162,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.LATITUDE.LABEL' | translate }}</label>
-                        <input type="number" nbInput fullWidth placeholder="Latitude" name="latitude"
+                        <input type="number" class="form-control" placeholder="Latitude" name="latitude"
                             [(ngModel)]="providerRequest.latitude" #latitude=ngModel>
                         <label [hidden]="latitude.valid || latitude.pristine" class="error text-danger">
                             {{ 'PROVIDER.FIELDS.LATITUDE.VALIDATION' | translate }}
@@ -171,7 +171,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.LONGITUDE.LABEL' | translate }}</label>
-                        <input type="number" nbInput fullWidth placeholder="Longitude" name="longitude"
+                        <input type="number" class="form-control" placeholder="Longitude" name="longitude"
                             [(ngModel)]="providerRequest.longitude" #longitude=ngModel>
                         <label [hidden]="longitude.valid || longitude.pristine" class="error text-danger">
                             {{ 'PROVIDER.FIELDS.LONGITUDE.VALIDATION' | translate }}
@@ -187,7 +187,7 @@
                                 <mat-card-content>
                                     <div class="form-group" *ngFor="let image of [].constructor(5); let i = index;">
                                         <label>{{ 'PROVIDER.FIELDS.IMAGES.LABEL' | translate }}</label>
-                                        <input type="file" nbInput fullWidth (change)="onImageChanged($event, i)">
+                                        <input type="file" class="form-control" (change)="onImageChanged($event, i)">
                                         <a *ngIf="provider?.mediaurls?.images && provider?.mediaurls?.images[i]"
                                             [href]="provider?.mediaurls?.images[i]?.default"
                                             target="_blank">{{ provider?.mediaurls?.images[i]?.default }}</a>
@@ -212,7 +212,7 @@
                                             <mat-card-header>
     <mat-card-title>
                                                 {{ 'PROVIDER.FIELDS.AVAILABILITY.LABEL' | translate }} {{i + 1}}
-                                                <button type="button" class="float-lg-right" nbButton status="danger"
+                                                <button type="button" class="float-lg-right" mat-flat-button color="warn"
                                                     size="small" (click)="deleteGroup(i)">
                                                     {{ 'PROVIDER.FIELDS.AVAILABILITY.DELETE.LABEL' | translate }}
                                                 </button>
@@ -237,14 +237,14 @@
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label>{{ 'PROVIDER.FIELDS.AVAILABILITY.FROM.LABEL' | translate }}</label>
-                                                                <input type="time" nbInput fullWidth
+                                                                <input type="time" class="form-control"
                                                                     formControlName="from">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label>{{ 'PROVIDER.FIELDS.AVAILABILITY.TO.LABEL' | translate }}</label>
-                                                                <input type="time" nbInput fullWidth
+                                                                <input type="time" class="form-control"
                                                                     formControlName="to">
                                                             </div>
                                                         </div>
@@ -255,7 +255,7 @@
                                     </div>
                                 </mat-card-content>
                             </mat-card>
-                            <button type="button" class="float-lg-right" nbButton status="info" size="medium"
+                            <button type="button" class="float-lg-right" mat-flat-button color="primary" size="medium"
                                 (click)="addNewGroup()">
                                 {{ 'PROVIDER.FIELDS.AVAILABILITY.ADD.LABEL' | translate }}
                             </button>
@@ -264,12 +264,12 @@
 
                     <ngx-metaeditor [(meta)]="providerRequest.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>

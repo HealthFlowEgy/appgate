@@ -17,7 +17,7 @@
                                                 <label>{{ 'COUPON.FIELDS.TITLE.LABEL' | translate }} <span
                                                         class="language-label">{{ languages[i] | languageTitle
                                                         }}</span></label>
-                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                                <input type="text" class="form-control" required formControlName="{{i}}">
                                             </div>
                                         </div>
                                     </div>
@@ -41,7 +41,7 @@
                                                 <label>{{ 'COUPON.FIELDS.DETAIL.LABEL' | translate }} <span
                                                         class="language-label">{{ languages[i] | languageTitle
                                                         }}</span></label>
-                                                <input type="text" nbInput fullWidth required formControlName="{{i}}">
+                                                <input type="text" class="form-control" required formControlName="{{i}}">
                                             </div>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'COUPON.FIELDS.CODE.LABEL' | translate }}</label>
-                        <input type="text" nbInput fullWidth placeholder="Code" name="code"
+                        <input type="text" class="form-control" placeholder="Code" name="code"
                             [(ngModel)]="couponRequest.code" #code=ngModel required>
                         <label [hidden]="code.valid || code.pristine" class="error text-danger">
                             {{ 'COUPON.FIELDS.CODE.VALIDATION' | translate }}
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'COUPON.FIELDS.REWARD.LABEL' | translate }}</label>
-                        <input type="number" nbInput fullWidth placeholder="Reward" name="reward"
+                        <input type="number" class="form-control" placeholder="Reward" name="reward"
                             [(ngModel)]="couponRequest.reward" #reward=ngModel required>
                         <label [hidden]="reward.valid || reward.pristine" class="error text-danger">
                             {{ 'COUPON.FIELDS.REWARD.VALIDATION' | translate }}
@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'COUPON.FIELDS.EXPIRES_AT.LABEL' | translate }}</label>
-                        <input type="date" nbInput fullWidth placeholder="Expires At" name="expires_at"
+                        <input type="date" class="form-control" placeholder="Expires At" name="expires_at"
                             [(ngModel)]="couponRequest.expires_at" #expires_at=ngModel required>
                         <label [hidden]="expires_at.valid || expires_at.pristine" class="error text-danger">
                             {{ 'COUPON.FIELDS.EXPIRES_AT.VALIDATION' | translate }}
@@ -92,12 +92,12 @@
                     
                     <ngx-metaeditor [(meta)]="couponRequest.meta"></ngx-metaeditor>
 
-                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"
+                    <button type="submit" [disabled]="!form.form.valid || showProgressButton" mat-flat-button color="accent"
                         size="medium" [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">
                         {{ 'COMMON.SAVE' | translate }}
                     </button>
                     &nbsp;
-                    <button type="button" nbButton status="danger" size="medium" (click)="back()">
+                    <button type="button" mat-flat-button color="warn" size="medium" (click)="back()">
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
