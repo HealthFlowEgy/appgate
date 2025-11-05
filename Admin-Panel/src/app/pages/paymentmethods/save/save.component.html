@@ -49,18 +49,18 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.ENABLED.LABEL' | translate }}</label>
-                        <nb-checkbox class="form-control" name="enabled" nbInput fullWidth [checked]="paymentmethodRequest.enabled"
-                            (checkedChange)="onEnabledChange($event)">Enabled?</nb-checkbox>
+                        <mat-checkbox class="form-control" name="enabled" nbInput fullWidth [checked]="paymentmethodRequest.enabled"
+                            (checkedChange)="onEnabledChange($event)">Enabled?</mat-checkbox>
                         <label class="error text-danger"
                             *ngFor="let error of paymentmethodError.enabled">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.TYPE.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="type" id="type" [(ngModel)]="paymentmethodRequest.type"
+                        <mat-select fullWidth name="type" id="type" [(ngModel)]="paymentmethodRequest.type"
                             #status=ngModel style="text-transform:capitalize">
-                            <nb-option *ngFor="let type of typeList" [value]="type">{{ type }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let type of typeList" [value]="type">{{ type }}
+                            </mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of paymentmethodError.type">{{error}}</label>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"

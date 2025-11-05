@@ -96,7 +96,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}</label>
-                        <nb-checkbox class="form-control" name="is_verified" nbInput fullWidth [checked]="providerRequest.is_verified" (checkedChange)="onIsVerifiedChange($event)">{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}?</nb-checkbox>
+                        <mat-checkbox class="form-control" name="is_verified" nbInput fullWidth [checked]="providerRequest.is_verified" (checkedChange)="onIsVerifiedChange($event)">{{ 'PROVIDER.IS_VERIFIED.LABEL' | translate }}?</mat-checkbox>
                         <div *ngIf="providerRequest.meta?.documents?.national_id">
                             <a [href]="providerRequest.meta?.documents?.national_id" target="_blank">{{ providerRequest.meta?.documents?.national_id }}</a>
                         </div>
@@ -120,29 +120,29 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.CATEGORIES.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="categories" multiple [(ngModel)]="providerRequest.categories"
+                        <mat-select fullWidth name="categories" multiple [(ngModel)]="providerRequest.categories"
                              style="text-transform: capitalize" (selectedChange)="onPrimaryCategoryChange($event)" required>
-                            <nb-option *ngFor="let category of categories" [value]="category.id">{{ category.title }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.title }}
+                            </mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of providerError.categories">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.SUBCATEGORIES.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="subcategories" multiple [(ngModel)]="providerRequest.subcategories"
+                        <mat-select fullWidth name="subcategories" multiple [(ngModel)]="providerRequest.subcategories"
                              style="text-transform: capitalize">
-                            <nb-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.title }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.title }}
+                            </mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of providerError.subcategories">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROVIDER.FIELDS.PLAN.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="plans" [(ngModel)]="providerRequest.plan_id" #plansNgModel=ngModel
+                        <mat-select fullWidth name="plans" [(ngModel)]="providerRequest.plan_id" #plansNgModel=ngModel
                             style="text-transform: capitalize">
-                            <nb-option *ngFor="let plan of plans" [value]="plan.id">{{ plan.name }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let plan of plans" [value]="plan.id">{{ plan.name }}
+                            </mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of providerError?.plan">{{error}}</label>
                     </div>
                     <div class="form-group">
@@ -218,12 +218,12 @@
                                                         <div class="col-sm-4">
                                                             <div class="form-group">
                                                                 <label>{{ 'PROVIDER.FIELDS.AVAILABILITY.DAY.LABEL' | translate }}</label>
-                                                                <nb-select fullWidth style="text-transform:capitalize"
+                                                                <mat-select fullWidth style="text-transform:capitalize"
                                                                     formControlName="days">
-                                                                    <nb-option *ngFor="let day of daysList"
+                                                                    <mat-option *ngFor="let day of daysList"
                                                                         [value]="day">{{ day }}
-                                                                    </nb-option>
-                                                                </nb-select>
+                                                                    </mat-option>
+                                                                </mat-select>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4">

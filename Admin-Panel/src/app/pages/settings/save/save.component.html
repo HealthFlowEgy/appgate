@@ -49,11 +49,11 @@
               </div>
               <div class="form-group">
                 <label style="text-transform: capitalize">{{ 'SETTINGS.DISTANCE_METRIC.LABEL' | translate }}</label>
-                <nb-select fullWidth name="distance_metric" id="distance_metric" nbInput fullWidth
+                <mat-select fullWidth name="distance_metric" id="distance_metric" nbInput fullWidth
                   [(ngModel)]="updatedSettings['distance_metric']">
-                  <nb-option *ngFor="let distanceMetric of distanceMetrics" [value]="distanceMetric">{{ distanceMetric }}
-                  </nb-option>
-                </nb-select>
+                  <mat-option *ngFor="let distanceMetric of distanceMetrics" [value]="distanceMetric">{{ distanceMetric }}
+                  </mat-option>
+                </mat-select>
               </div>
             </div>
             <div class="col-md-6">
@@ -76,11 +76,11 @@
                 <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.COMMISSION_TYPE.LABEL' | translate }}</label>
-                    <nb-select fullWidth name="admin_commision_type" id="admin_commision_type" nbInput fullWidth
+                    <mat-select fullWidth name="admin_commision_type" id="admin_commision_type" nbInput fullWidth
                       [(ngModel)]="updatedSettings['admin_commision_type']">
-                      <nb-option *ngFor="let commissionType of adminCommissionTypes" [value]="commissionType">
-                        {{ formatCommissionType(commissionType) }}</nb-option>
-                    </nb-select>
+                      <mat-option *ngFor="let commissionType of adminCommissionTypes" [value]="commissionType">
+                        {{ formatCommissionType(commissionType) }}</mat-option>
+                    </mat-select>
                   </div>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.ADMIN_FEE.LABEL' | translate }}</label>

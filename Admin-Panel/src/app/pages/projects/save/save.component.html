@@ -42,11 +42,11 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PROJECT.FIELDS.CITY.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="city_id" [(ngModel)]="projectRequest.city_id"
+                        <mat-select fullWidth name="city_id" [(ngModel)]="projectRequest.city_id"
                             #city_id=ngModel style="text-transform: capitalize">
-                            <nb-option *ngFor="let city of cityCategories" [value]="city.id">
-                                {{ city.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let city of cityCategories" [value]="city.id">
+                                {{ city.title }}</mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of projectError.city_id">{{error}}</label>
                     </div>
 

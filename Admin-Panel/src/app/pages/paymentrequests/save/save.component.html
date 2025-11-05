@@ -35,38 +35,38 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
+                        <mat-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
                             style="text-transform: capitalize" [(ngModel)]="paymentrequestRequest.project_id"
                             #project_id=ngModel>
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.BUILDING.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="building_id" [ngModel]="paymentrequest?.flat?.building_id"
+                        <mat-select fullWidth name="building_id" [ngModel]="paymentrequest?.flat?.building_id"
                             #building_id=ngModel style="text-transform: capitalize"
                             (selectedChange)="onBuildingChange($event)">
-                            <nb-option *ngFor="let building of buildings" [value]="building.id">
-                                {{ building.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let building of buildings" [value]="building.id">
+                                {{ building.title }}</mat-option>
+                        </mat-select>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.FLAT.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="flat_id" [(ngModel)]="paymentrequestRequest.flat_id" #flat_id=ngModel
+                        <mat-select fullWidth name="flat_id" [(ngModel)]="paymentrequestRequest.flat_id" #flat_id=ngModel
                             style="text-transform: capitalize">
-                            <nb-option *ngFor="let flat of flats" [value]="flat.id">
-                                {{ flat.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let flat of flats" [value]="flat.id">
+                                {{ flat.title }}</mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of paymentrequestError.flat_id">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTREQUEST.FIELDS.STATUS.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="status" id="status" [(ngModel)]="paymentrequestRequest.status" #status=ngModel
+                        <mat-select fullWidth name="status" id="status" [(ngModel)]="paymentrequestRequest.status" #status=ngModel
                             style="text-transform:capitalize">
-                            <nb-option *ngFor="let status of statusList" [value]="status">{{ status }}
-                            </nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}
+                            </mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of paymentrequestError.status">{{error}}</label>
                     </div>
 

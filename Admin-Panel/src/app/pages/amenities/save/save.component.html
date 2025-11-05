@@ -75,11 +75,11 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'AMENITY.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth name="project_id" [(ngModel)]="amenityRequest.project_id"
+                        <mat-select fullWidth name="project_id" [(ngModel)]="amenityRequest.project_id"
                             #project_id=ngModel style="text-transform: capitalize">
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
                         <label class="error text-danger" *ngFor="let error of amenityError.project_id">{{error}}</label>
                     </div>
 

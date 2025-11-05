@@ -22,19 +22,19 @@
     <mat-card-content>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="person-outline"></nb-icon>
+          <mat-icon>person-outline</mat-icon>
         </div>
         <div class="col-sm-8">{{data.user.mobile_number}}</div>
       </div>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="people-outline"></nb-icon>
+          <mat-icon>people-outline</mat-icon>
         </div>
         <div class="col-sm-8">{{data.vendor.name}}</div>
       </div>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="car-outline"></nb-icon>
+          <mat-icon>car-outline</mat-icon>
         </div>
         <div class="col-sm-8">
           <span *ngIf="data.delivery?.delivery">{{data.delivery?.delivery?.user.mobile_number }}</span>
@@ -43,7 +43,7 @@
       </div>
       <div class="row p-2">
         <div class="col-sm-3">
-          <nb-icon icon="info-outline"></nb-icon>
+          <mat-icon>info-outline</mat-icon>
         </div>
         <div class="col-sm-8">{{data.status}}</div>
       </div>

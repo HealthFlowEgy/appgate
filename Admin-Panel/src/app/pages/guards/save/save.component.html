@@ -39,12 +39,12 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'GUARD.FIELDS.PROJECT.LABEL' | translate }}</label>
-                        <nb-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
+                        <mat-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
                             style="text-transform: capitalize" [(ngModel)]="guardRequest.project_id"
                             #project_id=ngModel>
-                            <nb-option *ngFor="let project of projects" [value]="project.id">
-                                {{ project.title }}</nb-option>
-                        </nb-select>
+                            <mat-option *ngFor="let project of projects" [value]="project.id">
+                                {{ project.title }}</mat-option>
+                        </mat-select>
                     </div>
 
                     <ngx-metaeditor [(meta)]="guardRequest.meta"></ngx-metaeditor>
