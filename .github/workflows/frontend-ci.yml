@@ -1,0 +1,50 @@
+name: Frontend CI
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'Admin-Panel/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'Admin-Panel/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: Admin-Panel/package-lock.json
+
+    - name: Install Dependencies
+      working-directory: ./Admin-Panel
+      run: npm ci --legacy-peer-deps
+
+    - name: Lint
+      working-directory: ./Admin-Panel
+      run: npm run lint
+
+    - name: Build
+      working-directory: ./Admin-Panel
+      run: npm run build:prod
+
+    - name: Test
+      working-directory: ./Admin-Panel
+      run: npm run test:coverage
+      env:
+        CI: true
+
+    - name: Upload Coverage
+      uses: codecov/codecov-action@v3
+      with:
+        files: ./Admin-Panel/coverage/lcov.info
+        flags: frontend
+        name: frontend-coverage

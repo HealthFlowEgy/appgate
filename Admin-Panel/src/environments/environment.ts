@@ -10,4 +10,25 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:8000/api',
+  apiBaseUrl: 'http://localhost:8000',
+  appName: 'AppsGate Admin (Dev)',
+  version: '1.0.0-dev',
+  
+  // Firebase configuration (if used)
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: ''
+  },
+  
+  // Feature flags
+  features: {
+    enableAnalytics: false,
+    enableErrorReporting: false,
+    enableDebugMode: true
+  }
 };

@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  admin-panel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: appsgate-admin
+    restart: unless-stopped
+    ports:
+      - "4200:80"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - appsgate-network
+
+networks:
+  appsgate-network:
+    driver: bridge
