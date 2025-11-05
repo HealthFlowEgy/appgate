@@ -1,18 +1,18 @@
-<nb-card size="medium">
+<mat-card>
 
   <mat-card-header>
     <mat-card-title>
     <span>{{ 'DASHBOARD.USER_ACTIVITY' | translate }}</span>
-    <mat-form-field>
-                        <mat-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
-      <mat-option *ngFor="let t of types" [value]="t">{{ t }}</mat-option>
-    </mat-select>
-                    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-select [(value)]="type" (selectionChange)="getUserActivity($event.value)">
+        <mat-option *ngFor="let t of types" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-card-title>
   </mat-card-header>
 
-  <nb-list class="user-activity-list">
-    <nb-list-item *ngFor="let item of userActivity">
+  <mat-list class="user-activity-list">
+    <mat-list-item *ngFor="let item of userActivity">
 
       <div class="visited-date">
         {{ item.date }}
@@ -26,12 +26,12 @@
       <div class="visited-percentages">
         <div class="caption">New visits, %</div>
         <div class="delta value" [class.up]="item.deltaUp" [class.down]="!item.deltaUp">
-          <nb-icon [icon]="item.deltaUp ? 'arrow-up' : 'arrow-down'" pack="eva"></nb-icon>
+          <mat-icon>{{ item.deltaUp ? 'arrow_upward' : 'arrow_downward' }}</mat-icon>
           {{ item.newVisits }}%
         </div>
       </div>
 
-    </nb-list-item>
-  </nb-list>
+    </mat-list-item>
+  </mat-list>
 
 </mat-card>

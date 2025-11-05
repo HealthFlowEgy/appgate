@@ -1,8 +1,10 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-header>{{ 'COMMON.META' | translate }}</nb-card-header>
-            <nb-card-body>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ 'COMMON.META' | translate }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
                 <div [formGroup]="metaForm">
                     <div formArrayName="metafields">
                         <div *ngFor="let alias of metafields.controls; let i=index" class="form-group">
@@ -11,33 +13,42 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Key</label>
-                                            <input type="text" nbInput fullWidth formControlName="key">
+                                            <input type="text" nbInput fullWidth formControlName="key" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Value</label>
                                             <input *ngIf="!listItems[metafields.controls[i].value.key]; else scopeSelect" type="text"
-                                                nbInput fullWidth formControlName="value">
+                                                nbInput fullWidth formControlName="value" class="form-control">
                                             <ng-template #scopeSelect>
-                                                <nb-select fullWidth
-                                                    style="text-transform:capitalize" (selectedChange)="selectionChanged($event, metafields.controls[i].value.key)" [(selected)]="meta[metafields.controls[i].value.key]">
-                                                    <nb-option *ngFor="let item of listItems[metafields.controls[i].value.key]" [value]="item">
-                                                        {{ item }} 
-                                                    </nb-option>
-                                                </nb-select>
+                                                <mat-form-field class="full-width">
+                                                    <mat-select 
+                                                        style="text-transform:capitalize" 
+                                                        (selectionChange)="selectionChanged($event.value, metafields.controls[i].value.key)" 
+                                                        [(value)]="meta[metafields.controls[i].value.key]">
+                                                        <mat-option *ngFor="let item of listItems[metafields.controls[i].value.key]" [value]="item">
+                                                            {{ item }} 
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
                                             </ng-template>
                                         </div>
                                     </div>
-                                    <div class="col-md-1"><nb-icon icon="close-outline" (click)="deleteItem(i)"></nb-icon></div>
+                                    <div class="col-md-1">
+                                        <button mat-icon-button color="warn" (click)="deleteItem(i)">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="button" nbButton status="info" (click)="addMetaField()">{{ 'COMMON.META_ADD' |
-                            translate }}</button>
+                        <button type="button" mat-raised-button color="accent" (click)="addMetaField()">
+                            {{ 'COMMON.META_ADD' | translate }}
+                        </button>
                     </div>
                 </div>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

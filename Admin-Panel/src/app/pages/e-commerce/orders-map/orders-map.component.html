@@ -49,8 +49,8 @@
       </div>
       <div></div>
     </mat-card-content>
-    <nb-card-footer>
-      <button nbButton (click)="ref.close()">{{ 'COMMON.CLOSE' | translate }}</button>
-    </nb-card-footer>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="ref.close()">{{ 'COMMON.CLOSE' | translate }}</button>
+    </mat-card-actions>
   </mat-card>
 </ng-template>
