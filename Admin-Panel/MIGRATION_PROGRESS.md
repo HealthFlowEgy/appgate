@@ -19,11 +19,11 @@ This document tracks the progress of migrating from Nebular to Angular Material.
   - [x] Create shared Material module
   - [x] Document migration strategy
 
-- [ ] **Phase 2: Core Layout and Navigation** (Week 2)
-  - [ ] Migrate layout components
-  - [ ] Migrate sidebar/navigation
-  - [ ] Migrate menu components
-  - [ ] Update routing
+- [x] **Phase 2: Core Layout and Navigation** (Week 2) - ✅ **COMPLETED**
+  - [x] Migrate layout components
+  - [x] Migrate sidebar/navigation
+  - [x] Migrate menu components
+  - [x] Update routing
   - [ ] Test navigation flows
 
 - [x] **Phase 3: Form and Button Components** (Week 2-3) - ✅ **COMPLETED**

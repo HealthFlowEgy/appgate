@@ -1,0 +1,29 @@
+<mat-sidenav-container class="app-container">
+  <!-- Sidebar -->
+  <mat-sidenav 
+    #sidenav 
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+    class="app-sidenav">
+    <!-- Menu content will be projected here -->
+    <ng-content select="[menu]"></ng-content>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content class="app-content">
+    <!-- Header -->
+    <mat-toolbar color="primary" class="app-header">
+      <ngx-header (toggleSidebarEvent)="toggleSidebar()"></ngx-header>
+    </mat-toolbar>
+
+    <!-- Page Content -->
+    <div class="content-wrapper">
+      <ng-content select="router-outlet"></ng-content>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <ngx-footer></ngx-footer>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

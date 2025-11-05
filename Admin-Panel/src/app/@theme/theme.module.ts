@@ -40,6 +40,9 @@ import {
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
 } from './layouts';
+import { MaterialLayoutComponent } from './layouts/material-layout/material-layout.component';
+import { MaterialMenuComponent } from './components/material-menu/material-menu.component';
+import { MaterialModule } from '../@core/material/material.module';
 import { DEFAULT_THEME } from './styles/theme.default';
 import { COSMIC_THEME } from './styles/theme.cosmic';
 import { CORPORATE_THEME } from './styles/theme.corporate';
@@ -56,7 +59,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MetaeditorComponent } from './components/metaeditor/metaeditor.component';
 
-const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule];
+const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule, MaterialModule];
 
 const NB_MODULES = [
   NbLayoutModule,
@@ -90,6 +93,8 @@ const COMPONENTS = [
   OneColumnLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
+  MaterialLayoutComponent,
+  MaterialMenuComponent,
 
   OrdersChartComponent,
   ChartPanelSummaryComponent,
