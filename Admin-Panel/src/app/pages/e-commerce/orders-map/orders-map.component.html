@@ -1,6 +1,8 @@
-<nb-card>
-  <nb-card-header>{{ 'DASHBOARD.ACTIVE_ORDERS' | translate }}</nb-card-header>
-  <nb-card-body>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ 'DASHBOARD.ACTIVE_ORDERS' | translate }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
     <div *ngIf="apiLoaded | async">
       <google-map #googleMap width="100%">
         <map-marker *ngFor="let order of orders"
@@ -9,13 +11,15 @@
         </map-marker>
       </google-map>
     </div>
-  </nb-card-body>
-</nb-card>
+  </mat-card-content>
+</mat-card>
 
 <ng-template #orderInfoDialog let-data let-ref="dialogRef">
-  <nb-card>
-    <nb-card-header>{{ 'DASHBOARD.ORDER' | translate }} #{{data.id}}</nb-card-header>
-    <nb-card-body>
+  <mat-card>
+    <mat-card-header>
+    <mat-card-title>{{ 'DASHBOARD.ORDER' | translate }} #{{data.id}}</mat-card-title>
+  </mat-card-header>
+    <mat-card-content>
       <div class="row p-2">
         <div class="col-sm-3">
           <nb-icon icon="person-outline"></nb-icon>
@@ -44,9 +48,9 @@
         <div class="col-sm-8">{{data.status}}</div>
       </div>
       <div></div>
-    </nb-card-body>
+    </mat-card-content>
     <nb-card-footer>
       <button nbButton (click)="ref.close()">{{ 'COMMON.CLOSE' | translate }}</button>
     </nb-card-footer>
-  </nb-card>
+  </mat-card>
 </ng-template>

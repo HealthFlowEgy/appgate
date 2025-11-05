@@ -1,14 +1,18 @@
 <div class="row">
   <div class="col-md-12">
-    <nb-card>
-      <nb-card-header>{{ 'SETTINGS.LABELS.ENV' | translate }}</nb-card-header>
-      <nb-card-body>
+    <mat-card>
+      <mat-card-header>
+    <mat-card-title>{{ 'SETTINGS.LABELS.ENV' | translate }}</mat-card-title>
+  </mat-card-header>
+      <mat-card-content>
         <form (ngSubmit)="updateEnv()">
           <div class="row">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'SETTINGS.APP_CONFIG.LABEL' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'SETTINGS.APP_CONFIG.LABEL' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.APP_CONFIG.TIMEZONE.LABEL' | translate }}</label>
                     <nb-select fullWidth name="app_timezone" id="app_timezone" [(ngModel)]="env.APP_TIMEZONE"
@@ -16,15 +20,17 @@
                       <nb-option *ngFor="let timezone of timezoneList" [value]="timezone">{{ timezone }}</nb-option>
                     </nb-select>
                   </div>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'SETTINGS.PUSH_NOTIFICATIONS.LABEL' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'SETTINGS.PUSH_NOTIFICATIONS.LABEL' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.EMAIL_SETTINGS.ONESIGNAL_APP_ID_CUSTOMER.LABEL' | translate }}</label>
                     <input nbInput fullWidth [(ngModel)]="env.ONESIGNAL_APP_ID_CUSTOMER"
@@ -35,8 +41,8 @@
                     <input nbInput fullWidth [(ngModel)]="env.ONESIGNAL_REST_API_CUSTOMER"
                       name="ONESIGNAL_REST_API_CUSTOMER" />
                   </div>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
           <button type="submit" nbButton status="success" size="medium" [nbSpinner]="showProgressButton"
@@ -44,7 +50,7 @@
             {{ 'COMMON.SAVE' | translate }}
           </button>
         </form>
-      </nb-card-body>
-    </nb-card>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

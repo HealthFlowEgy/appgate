@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-md-12">
-      <nb-card>
-          <nb-card-header>{{ 'SETTINGS.LABELS.EDIT' | translate }}</nb-card-header>
-          <nb-card-body>
+      <mat-card>
+          <mat-card-header>
+    <mat-card-title>{{ 'SETTINGS.LABELS.EDIT' | translate }}</mat-card-title>
+  </mat-card-header>
+          <mat-card-content>
               <form (ngSubmit)="updateSetting()">
                   <div class="form-group" *ngFor="let setting of settings">
                       <label for="{{ setting.key }}" style="text-transform: capitalize">{{ formatKey(setting.key) }}</label>
@@ -13,16 +15,18 @@
                   {{ 'COMMON.SAVE' | translate }}
                   </button>
               </form>
-          </nb-card-body>
-      </nb-card>
+          </mat-card-content>
+      </mat-card>
   </div>
 </div>
 <!-- <form (ngSubmit)="updateSetting()">
   <div class="row">
     <div class="col-md-12">
-      <nb-card>
-        <nb-card-header> {{ 'SETTINGS.LABELS.EDIT' | translate }}</nb-card-header>
-        <nb-card-body>
+      <mat-card>
+        <mat-card-header>
+    <mat-card-title> {{ 'SETTINGS.LABELS.EDIT' | translate }}</mat-card-title>
+  </mat-card-header>
+        <mat-card-content>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -65,9 +69,11 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'SETTINGS.ADMIN_COMMISION.LABEL' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'SETTINGS.ADMIN_COMMISION.LABEL' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.COMMISSION_TYPE.LABEL' | translate }}</label>
                     <nb-select fullWidth name="admin_commision_type" id="admin_commision_type" nbInput fullWidth
@@ -81,8 +87,8 @@
                     <input type="number" nbInput fullWidth [(ngModel)]="updatedSettings['admin_commision_value']"
                       name="admin_commision_value" />
                   </div>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
           <div class="row">
@@ -98,8 +104,8 @@
             nbSpinnerStatus="primary" nbSpinnerSize="small" nbSpinnerMessage="Saving">
             {{ 'COMMON.SAVE' | translate }}
           </button>
-        </nb-card-body>
-      </nb-card>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </form> -->

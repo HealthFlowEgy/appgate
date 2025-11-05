@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveProvider()" #form="ngForm">
                     <div *ngIf="!editId" class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'PROVIDER.FIELDS.USER.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'PROVIDER.FIELDS.USER.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'USER.EMAIL.LABEL' | translate }}</label>
                                         <input type="email" nbInput fullWidth placeholder="Email" name="email"
@@ -40,17 +42,19 @@
                                         <label class="error text-danger"
                                             *ngFor="let error of providerError.password">{{error}}</label>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
 
                     <div class="row">
 
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'PROVIDER.FIELDS.NAME.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'PROVIDER.FIELDS.NAME.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div [formGroup]="nameGroupForm">
                                         <div formArrayName="items">
                                             <div class="form-group"
@@ -63,15 +67,17 @@
                                     </div>
                                     <label class="error text-danger"
                                         *ngFor="let error of providerError.name_translations">{{error}}</label>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'PROVIDER.FIELDS.DETAILS.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'PROVIDER.FIELDS.DETAILS.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div [formGroup]="detailsGroupForm">
                                         <div formArrayName="items">
                                             <div class="form-group"
@@ -84,8 +90,8 @@
                                     </div>
                                     <label class="error text-danger"
                                         *ngFor="let error of providerError.details_translations">{{error}}</label>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="form-group">
@@ -168,9 +174,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'PROVIDER.FIELDS.IMAGES.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'PROVIDER.FIELDS.IMAGES.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="form-group" *ngFor="let image of [].constructor(5); let i = index;">
                                         <label>{{ 'PROVIDER.FIELDS.IMAGES.LABEL' | translate }}</label>
                                         <input type="file" nbInput fullWidth (change)="onImageChanged($event, i)">
@@ -180,27 +188,31 @@
                                     </div>
                                     <label class="error text-danger"
                                         *ngFor="let error of providerError?.images">{{error}}</label>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <nb-card [formGroup]="groupForm">
-                                <nb-card-header>{{ 'PROVIDER.FIELDS.AVAILABILITY.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                                <mat-card-header>
+    <mat-card-title>{{ 'PROVIDER.FIELDS.AVAILABILITY.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div formArrayName="items"
                                         *ngFor="let item of getFormGroupItems().controls; let i = index;">
-                                        <nb-card>
-                                            <nb-card-header>
+                                        <mat-card>
+                                            <mat-card-header>
+    <mat-card-title>
                                                 {{ 'PROVIDER.FIELDS.AVAILABILITY.LABEL' | translate }} {{i + 1}}
                                                 <button type="button" class="float-lg-right" nbButton status="danger"
                                                     size="small" (click)="deleteGroup(i)">
                                                     {{ 'PROVIDER.FIELDS.AVAILABILITY.DELETE.LABEL' | translate }}
                                                 </button>
-                                            </nb-card-header>
-                                            <nb-card-body>
+                                            </mat-card-title>
+  </mat-card-header>
+                                            <mat-card-content>
                                                 <div [formGroupName]="i">
                                                     <div class="row">
                                                         <div class="col-sm-4">
@@ -230,11 +242,11 @@
                                                         </div>
                                                     </div>                                                    
                                                 </div>
-                                            </nb-card-body>
-                                        </nb-card>
+                                            </mat-card-content>
+                                        </mat-card>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                             <button type="button" class="float-lg-right" nbButton status="info" size="medium"
                                 (click)="addNewGroup()">
                                 {{ 'PROVIDER.FIELDS.AVAILABILITY.ADD.LABEL' | translate }}
@@ -253,7 +265,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

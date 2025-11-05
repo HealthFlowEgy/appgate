@@ -1,13 +1,15 @@
 <div class="row">
   <div class="col-md-12">
-    <nb-card>
-      <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+    <mat-card>
+      <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
         <form (ngSubmit)="saveMedia()" #form="ngForm">
           <div class="row">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'MEDIA.FIELDS.TITLE.HEADER' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'MEDIA.FIELDS.TITLE.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <div [formGroup]="titleGroupForm">
                     <div formArrayName="items">
                       <div class="form-group" *ngFor="let alias of getTitleItems().controls; let i=index">
@@ -19,8 +21,8 @@
                   </div>
                   <label class="error text-danger"
                     *ngFor="let error of mediaError?.title_translations">{{error}}</label>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
           <div class="form-group">
@@ -48,9 +50,11 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'MEDIA.FIELDS.IMAGE.HEADER' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'MEDIA.FIELDS.IMAGE.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <div class="form-group" *ngFor="let image of [].constructor(5); let i = index;">
                     <label>{{ 'MEDIA.FIELDS.IMAGE.LABEL' | translate }}</label>
                     <input type="file" nbInput fullWidth (change)="onImageChanged($event, i)">
@@ -59,16 +63,18 @@
                       media?.medialibrary?.images[i]?.default }}</a>
                   </div>
                   <label class="error text-danger" *ngFor="let error of mediaError?.images">{{error}}</label>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'MEDIA.FIELDS.STATS.HEADER' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'MEDIA.FIELDS.STATS.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'MEDIA.FIELDS.STATS.LIKES_COUNT.LABEL' | translate }}</label>
                     <input type="text" readonly nbInput fullWidth [value]="media.likes_count">
@@ -81,8 +87,8 @@
                     <label>{{ 'MEDIA.FIELDS.STATS.VIEWS_COUNT.LABEL' | translate }}</label>
                     <input type="text" readonly nbInput fullWidth [value]="media.views_count">
                   </div>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
 
@@ -90,13 +96,15 @@
 
           <div class="row" *ngIf="editId">
             <div class="col-md-12">
-              <nb-card>
-                <nb-card-header>{{ 'COMMON.MORE_ACTIONS' | translate }}</nb-card-header>
-                <nb-card-body>
+              <mat-card>
+                <mat-card-header>
+    <mat-card-title>{{ 'COMMON.MORE_ACTIONS' | translate }}</mat-card-title>
+  </mat-card-header>
+                <mat-card-content>
                   <a [routerLink]="['/pages/comments/list']" [queryParams]="{media: editId}" nbButton
                     status="info">View All Comments</a>
-                </nb-card-body>
-              </nb-card>
+                </mat-card-content>
+              </mat-card>
             </div>
           </div>
 
@@ -109,7 +117,7 @@
             {{ 'COMMON.BACK' | translate }}
           </button>
         </form>
-      </nb-card-body>
-    </nb-card>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

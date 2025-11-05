@@ -1,14 +1,16 @@
 <div class="row">
     <div class="col-md-12">
-        <nb-card>
-            <nb-card-body [nbSpinner]="showProgress" nbSpinnerStatus="danger">
+        <mat-card>
+            <mat-card-content [nbSpinner]="showProgress" nbSpinnerStatus="danger">
                 <form (ngSubmit)="saveGuard()" #form="ngForm">
 
                     <div *ngIf="!editId" class="row">
                         <div class="col-md-12">
-                            <nb-card>
-                                <nb-card-header>{{ 'GUARD.FIELDS.USER.HEADER' | translate }}</nb-card-header>
-                                <nb-card-body>
+                            <mat-card>
+                                <mat-card-header>
+    <mat-card-title>{{ 'GUARD.FIELDS.USER.HEADER' | translate }}</mat-card-title>
+  </mat-card-header>
+                                <mat-card-content>
                                     <div class="form-group">
                                         <label>{{ 'USER.NAME.LABEL' | translate }}</label>
                                         <input type="email" nbInput fullWidth placeholder="Name" name="name"
@@ -31,8 +33,8 @@
                                         <label class="error text-danger"
                                             *ngFor="let error of guardError.mobile_number">{{error}}</label>
                                     </div>
-                                </nb-card-body>
-                            </nb-card>
+                                </mat-card-content>
+                            </mat-card>
                         </div>
                     </div>
                     <div class="form-group">
@@ -56,7 +58,7 @@
                         {{ 'COMMON.BACK' | translate }}
                     </button>
                 </form>
-            </nb-card-body>
-        </nb-card>
+            </mat-card-content>
+        </mat-card>
     </div>
 </div>

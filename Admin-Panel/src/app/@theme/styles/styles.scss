@@ -3,6 +3,9 @@
 // themes - our custom or/and out of the box themes
 @import 'themes';
 
+// Angular Material theme
+@import '../../../custom-material-theme.scss';
+
 // framework component themes (styles tied to theme variables)
 @import '@nebular/theme/styles/globals';
 @import '@nebular/auth/styles/globals';
