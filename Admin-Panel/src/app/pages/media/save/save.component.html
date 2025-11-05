@@ -27,18 +27,22 @@
           </div>
           <div class="form-group">
             <label>{{ 'MEDIA.FIELDS.USER.LABEL' | translate }}</label>
-            <mat-select fullWidth name="user_id" [(ngModel)]="mediaRequest.user_id" #user_id=ngModel
+            <mat-form-field>
+                        <mat-select fullWidth name="user_id" [(ngModel)]="mediaRequest.user_id" #user_id=ngModel
               style="text-transform: capitalize">
               <mat-option *ngFor="let user of users" [value]="user.id">{{ user.mobile_number }} ({{ user.name }})
               </mat-option>
             </mat-select>
+                    </mat-form-field>
             <label class="error text-danger" *ngFor="let error of mediaError.user_id">{{error}}</label>
           </div>
           <div class="form-group">
             <label>{{ 'MEDIA.FIELDS.STATUS.LABEL' | translate }}</label>
-            <mat-select fullWidth name="status" id="status" [(ngModel)]="mediaRequest.status" #status=ngModel>
+            <mat-form-field>
+                        <mat-select fullWidth name="status" id="status" [(ngModel)]="mediaRequest.status" #status=ngModel>
               <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}</mat-option>
             </mat-select>
+                    </mat-form-field>
           </div>
           <div class="form-group">
             <label>{{ 'MEDIA.FIELDS.CONTENT.LABEL' | translate }}</label>

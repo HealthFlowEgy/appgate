@@ -56,11 +56,13 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'PAYMENTMETHOD.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="type" id="type" [(ngModel)]="paymentmethodRequest.type"
                             #status=ngModel style="text-transform:capitalize">
                             <mat-option *ngFor="let type of typeList" [value]="type">{{ type }}
                             </mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of paymentmethodError.type">{{error}}</label>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"

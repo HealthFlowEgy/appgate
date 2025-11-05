@@ -15,19 +15,23 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'FLAT.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth (selectedChange)="onProjectChange($event)" style="text-transform: capitalize" [selected]="flat?.building?.project?.id">
                             <mat-option *ngFor="let project of projects" [value]="project.id">
                                 {{ project.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                     </div>
 
                     <div class="form-group">
                         <label>{{ 'FLAT.FIELDS.BUILDING.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="building_id" [(ngModel)]="flatRequest.building_id"
                             #building_id=ngModel style="text-transform: capitalize">
                             <mat-option *ngFor="let building of buildings" [value]="building.id">
                                 {{ building.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of flatError.building_id">{{error}}</label>
                     </div>
 

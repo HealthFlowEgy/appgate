@@ -68,40 +68,48 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'RESIDENT.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="type" id="type" [(ngModel)]="residentRequest.type" #type=ngModel
                             style="text-transform:capitalize">
                             <mat-option *ngFor="let type of typeList" [value]="type">{{ type }}
                             </mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of residentError.type">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'RESIDENT.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth (selectedChange)="onProjectChange($event)" name="project_id"
                             style="text-transform: capitalize" [(ngModel)]="residentRequest.project_id"
                             #project_id=ngModel>
                             <mat-option *ngFor="let project of projects" [value]="project.id">
                                 {{ project.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                     </div>
                     <div class="form-group">
                         <label>{{ 'RESIDENT.FIELDS.BUILDING.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="building_id" [(ngModel)]="residentRequest.building_id"
                             #building_id=ngModel style="text-transform: capitalize"
                             (selectedChange)="onBuildingChange($event)">
                             <mat-option *ngFor="let building of buildings" [value]="building.id">
                                 {{ building.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger"
                             *ngFor="let error of residentError.building_id">{{error}}</label>
                     </div>
                     <div class="form-group">
                         <label>{{ 'RESIDENT.FIELDS.FLAT.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="flat_id" [(ngModel)]="residentRequest.flat_id" #flat_id=ngModel
                             style="text-transform: capitalize">
                             <mat-option *ngFor="let flat of flats" [value]="flat.id">
                                 {{ flat.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of residentError.flat_id">{{error}}</label>
                     </div>
 

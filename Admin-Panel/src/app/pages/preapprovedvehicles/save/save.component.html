@@ -60,11 +60,13 @@
 
                     <div class="form-group">
                         <label>{{ 'VISITORLOG.FIELDS.STATUS.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="status" id="status" [(ngModel)]="visitorlogRequest.status"
                             #status=ngModel style="text-transform:capitalize">
                             <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}
                             </mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of visitorlogError.status">{{error}}</label>
                     </div>
 

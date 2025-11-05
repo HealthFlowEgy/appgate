@@ -52,11 +52,13 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'CATEGORY.FIELDS.PARENT.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="parent_id" [(ngModel)]="categoryRequest.parent_id"
                             #parent_id=ngModel style="text-transform: capitalize">
                             <mat-option *ngFor="let parentCategory of parentCategories" [value]="parentCategory.id">
                                 {{ parentCategory.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of categoryError.parent_id">{{error}}</label>
                     </div>
                     <div class="form-group">

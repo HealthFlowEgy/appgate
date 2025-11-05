@@ -15,10 +15,12 @@
                 <mat-card-content>
                   <div class="form-group">
                     <label>{{ 'SETTINGS.APP_CONFIG.TIMEZONE.LABEL' | translate }}</label>
-                    <mat-select fullWidth name="app_timezone" id="app_timezone" [(ngModel)]="env.APP_TIMEZONE"
+                    <mat-form-field>
+                        <mat-select fullWidth name="app_timezone" id="app_timezone" [(ngModel)]="env.APP_TIMEZONE"
                       name="app_timezone">
                       <mat-option *ngFor="let timezone of timezoneList" [value]="timezone">{{ timezone }}</mat-option>
                     </mat-select>
+                    </mat-form-field>
                   </div>
                 </mat-card-content>
               </mat-card>

@@ -5,11 +5,13 @@
                 <form (ngSubmit)="saveAnnouncement()" #form="ngForm">
                     <div class="form-group">
                         <label>{{ 'ANNOUNCEMENT.FIELDS.TYPE.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="type" id="type" [(ngModel)]="announcementRequest.type"
                             #type=ngModel style="text-transform:capitalize" required>
                             <mat-option *ngFor="let type of typesList" [value]="type">{{ type }}
                             </mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of announcementError.type">{{error}}</label>
                     </div>
                     <div class="form-group">
@@ -34,11 +36,13 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'ANNOUNCEMENT.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="project_id" [(ngModel)]="announcementRequest.project_id"
                             #project_id=ngModel style="text-transform: capitalize">
                             <mat-option *ngFor="let project of projects" [value]="project.id">
                                 {{ project.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of announcementError.project_id">{{error}}</label>
                     </div>
 

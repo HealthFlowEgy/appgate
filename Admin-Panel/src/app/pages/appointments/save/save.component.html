@@ -156,12 +156,14 @@
                     </div>
                     <div class="form-group">
                         <label>{{ 'APPOINTMENT.FIELDS.STATUS.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="status" id="status" [(ngModel)]="appointmentRequest.status"
                             #status=ngModel style="text-transform:capitalize">
                             <mat-option *ngFor="let appointmentStatus of appointmentStatusList"
                                 [value]="appointmentStatus">{{ appointmentStatus }}
                             </mat-option>
                         </mat-select>
+                    </mat-form-field>
                         <label class="error text-danger" *ngFor="let error of appointmentError.status">{{error}}</label>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success"

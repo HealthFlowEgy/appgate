@@ -46,10 +46,12 @@
                     </div>                                                        
                     <div class="form-group">
                         <label>{{ 'USER.ROLES.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="roles" multiple [(ngModel)]="userRequest.roles" #roles=ngModel
                         style="text-transform: capitalize">
                             <mat-option *ngFor="let userRole of userRoles" [value]="userRole.name">{{ formatRole(userRole.name) }}</mat-option>
-                        </mat-select>                        
+                        </mat-select>
+                    </mat-form-field>                        
                         <label class="error text-danger" *ngFor="let error of userError.roles">{{error}}</label>                        
                     </div>          
                     <div class="form-group">
@@ -77,12 +79,14 @@
                     </div>-->
                     <div class="form-group">
                         <label>{{ 'USER.FIELDS.PROJECT.LABEL' | translate }}</label>
+                        <mat-form-field>
                         <mat-select fullWidth name="project_id" [(ngModel)]="userRequest.meta.project_id"
                             #project_id=ngModel style="text-transform: capitalize">
                             <mat-option [value]="">Select</mat-option>
                             <mat-option *ngFor="let project of projects" [value]="project.id">
                                 {{ project.title }}</mat-option>
                         </mat-select>
+                    </mat-form-field>
                     </div>
                     <button type="submit" [disabled]="!form.form.valid || showProgressButton" nbButton status="success" size="medium" 
                     [nbSpinner]="showProgressButton" nbSpinnerStatus="success" nbSpinnerSize="small">

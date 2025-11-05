@@ -3,9 +3,11 @@
   <mat-card-header>
     <mat-card-title>
     <span>{{ 'DASHBOARD.USER_ACTIVITY' | translate }}</span>
-    <mat-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
+    <mat-form-field>
+                        <mat-select [selected]="type" (selectedChange)="getUserActivity($event); type = $event">
       <mat-option *ngFor="let t of types" [value]="t">{{ t }}</mat-option>
     </mat-select>
+                    </mat-form-field>
   </mat-card-title>
   </mat-card-header>
 
